@@ -2,7 +2,10 @@
 # A shiny web app - server.R #
 ##############################
 
-setwd ("/Dev/Git/shiny_testers")
+#setwd ("/Dev/Git/shiny_testers")
+setwd("/git/shiny_testers")
+
+
 
 library(shiny) # load shiny
 
@@ -40,7 +43,7 @@ neg_score <- -rowSums(HappyData[,neg_index])
 # The happiness index is a reflection of how positive or negative a job is
 WorkplaceHappinessIndex <- pos_score+neg_score
 
-usethis <- WorkplaceHappinessIndex
+
 
 # bind the Workplace Happiness Index onto the end of mydata
 mydata <- cbind(mydata[,],WorkplaceHappinessIndex)
@@ -61,39 +64,28 @@ happyfivetoten <- mydata[fivetoten, 54]
 happytentotwenty <- mydata[tentotwenty, 54]
 happytwentyplus <- mydata[twentyplus, 54]
 
-shinyServer(function(input, output){
-  
-  output$textDisplay <- renderText({
-    paste0("radio button selected is: ", input$rbutton)
 
-    if (input$rbutton=="lessthanone") { 
-      print("lessthanone selected")
-    }
-    if (input$rbutton=="onetotwo") { 
-      print("onetotwo selected")
-    }
-    if (input$rbutton=="twotofive") { 
-      print("twotofive selected")
-    }
-    if (input$rbutton=="fivetoten") { 
-      print("fivetoten selected")
-    }
-    if (input$rbutton=="tentotwenty") { 
-      print("tentotwenty selected")
-    }
-    if (input$rbutton=="twentyplus") { 
-      print("twentyplus selected")
-    }
-    
+
+shinyServer(function(input, output){
+ 
+  output$text1 <- renderText({ 
+    paste(input$checkExp)
+  })
+  
+  output$text2 <- renderText({ 
+    paste(input$checkHappy)
+  })
+  
+  output$text3 <- renderText({ 
+    paste(input$checkQual)
   })
   
   
-  
-  output$happyPlot <- renderPlot({
+  output$plot <- renderPlot({
     
     # Plot a Histogram of Workplace Happiness
-    breaks <- c(min(usethis):max(usethis))
-    hist(usethis, 
+    breaks <- c(min(WorkplaceHappinessIndex):max(WorkplaceHappinessIndex))
+    hist(WorkplaceHappinessIndex, 
          breaks = breaks,
          xlim = c(-12,12),
          xlab = "Workplace Happiness Index",
@@ -102,17 +94,15 @@ shinyServer(function(input, output){
          main = "Histogram of Happiness at work"
     )
     axis(1, at = seq(-12, 12, by = 1))
-    abline(v = mean(usethis), col = "black", lty = 5, lwd = 2)
+    abline(v = mean(WorkplaceHappinessIndex), col = "black", lty = 5, lwd = 2)
     legend(-12,15,
-           legend=paste0("mean = ", round(mean(usethis), digits=1)), 
+           legend=paste0("mean = ", round(mean(WorkplaceHappinessIndex), digits=1)), 
            col = "black", 
            lty = 5, 
            lwd = 2
     )
-
+    
   })
-  
- 
   
   
 })
