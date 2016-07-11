@@ -2,7 +2,7 @@
 # A shiny web app - ui.R #
 ##########################
 
-setwd ("/Dev/Git/shiny_tester")
+setwd ("/Dev/Git/shiny_testers")
 
 library(shiny) # load shiny
 
@@ -11,7 +11,7 @@ shinyUI(pageWithSidebar(
   headerPanel("Minimal example"),
   sidebarPanel(
     
-    textInput(inputID = "comment",
+    textInput(inputId = "comment",
               label = "Say something?",
               value = "" #initial value
     )
@@ -25,4 +25,3 @@ shinyUI(pageWithSidebar(
   
 ))
 
-runApp()
