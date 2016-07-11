@@ -8,11 +8,11 @@ library(shiny) # load shiny
 
 shinyUI(pageWithSidebar(
   
-  headerPanel("Minimal example")
+  headerPanel("Minimal example"),
   sidebarPanel(
     
     textInput(inputID = "comment",
-              label = "Say something?"
+              label = "Say something?",
               value = "" #initial value
     )
     
