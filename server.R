@@ -40,6 +40,8 @@ neg_score <- -rowSums(HappyData[,neg_index])
 # The happiness index is a reflection of how positive or negative a job is
 WorkplaceHappinessIndex <- pos_score+neg_score
 
+usethis <- WorkplaceHappinessIndex
+
 # bind the Workplace Happiness Index onto the end of mydata
 mydata <- cbind(mydata[,],WorkplaceHappinessIndex)
 
@@ -61,18 +63,37 @@ happytwentyplus <- mydata[twentyplus, 54]
 
 shinyServer(function(input, output){
   
-  #output$textDisplay <- renderText({
-  #  paste0("You said '", input$rbutton,
-  #         "'. There are ", nchar(input$rbutton),
-  #         " characters in this."
-  #         )
-  #})
+  output$textDisplay <- renderText({
+    paste0("radio button selected is: ", input$rbutton)
+
+    if (input$rbutton=="lessthanone") { 
+      print("lessthanone selected")
+    }
+    if (input$rbutton=="onetotwo") { 
+      print("onetotwo selected")
+    }
+    if (input$rbutton=="twotofive") { 
+      print("twotofive selected")
+    }
+    if (input$rbutton=="fivetoten") { 
+      print("fivetoten selected")
+    }
+    if (input$rbutton=="tentotwenty") { 
+      print("tentotwenty selected")
+    }
+    if (input$rbutton=="twentyplus") { 
+      print("twentyplus selected")
+    }
+    
+  })
+  
+  
   
   output$happyPlot <- renderPlot({
     
     # Plot a Histogram of Workplace Happiness
-    breaks <- c(min(input$rbutton):max(input$rbutton))
-    hist(input$rbutton, 
+    breaks <- c(min(usethis):max(usethis))
+    hist(usethis, 
          breaks = breaks,
          xlim = c(-12,12),
          xlab = "Workplace Happiness Index",
@@ -81,14 +102,18 @@ shinyServer(function(input, output){
          main = "Histogram of Happiness at work"
     )
     axis(1, at = seq(-12, 12, by = 1))
-    abline(v = mean(input$rbutton), col = "black", lty = 5, lwd = 2)
+    abline(v = mean(usethis), col = "black", lty = 5, lwd = 2)
     legend(-12,15,
-           legend=paste0("mean = ", round(mean(input$rbutton), digits=1)), 
+           legend=paste0("mean = ", round(mean(usethis), digits=1)), 
            col = "black", 
            lty = 5, 
            lwd = 2
     )
 
   })
+  
+ 
+  
+  
 })
 

@@ -13,27 +13,22 @@ shinyUI(pageWithSidebar(
   headerPanel("Happy Testers"),
   sidebarPanel(
     
-    #textInput(inputId = "comment",
-    #          label = "Say something?",
-    #          value = "" #initial value
-    #)
-    
     radioButtons(inputId = "rbutton", 
                  label = "Experience", 
-                 c("> 1 year" = "happylessthanone", 
-                   "1 - 2 years" = "happyonetotwo", 
-                   "2 - 5 years" = "happytwotofive", 
-                   "5 - 10 years" = "happyfivetoten", 
-                   "10 - 20 years" = "happytentotwenty",
-                   "20 + years" = "happytwentyplus" )
+                 c("> 1 year" = "lessthanone", 
+                   "1 - 2 years" = "onetotwo", 
+                   "2 - 5 years" = "twotofive", 
+                   "5 - 10 years" = "fivetoten", 
+                   "10 - 20 years" = "tentotwenty",
+                   "20 + years" = "twentyplus" )
     )
     
     
   ),
   
   mainPanel(
-   # h3("This is you saying it"),
-   # textOutput("textDisplay")
+    h3("This is the output of textDisplay"),
+    textOutput("textDisplay"),
     
     plotOutput("happyPlot")
   )
