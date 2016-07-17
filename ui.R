@@ -20,7 +20,7 @@ shinyUI(pageWithSidebar(
   
   headerPanel("Happy Testers"),
   sidebarPanel(
-    
+    h4("Define the group of Software Testers to examine"),
     selectInput("exp",
                 label = "1. Experience",
                 choices = list("> 1 year" = "1", 
