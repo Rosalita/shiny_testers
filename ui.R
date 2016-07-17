@@ -29,7 +29,7 @@ shinyUI(pageWithSidebar(
                 "5 - 10 years" = "4", 
                 "10 - 20 years" = "5",
                 "20 + years" = "6"),
-                       selected	= 1
+                       selected	= "1"
                        )
     
    

@@ -19,20 +19,22 @@ shinyServer(function(input, output){
   output$text1 <- renderText({ 
     
   
-    data <- switch(input$exp, 
-                   "1" = happylessthanone,
-                   "2" = happyonetotwo,
-                   "3" = happytwotofive,
-                   "4" = happyfivetoten,
-                   "5" = happytentotwenty,
-                   "6" = happytwentyplus)
-    
     paste(input$exp)
     
   })
   
   
   output$plot <- renderPlot({
+    
+    data <- switch(input$exp, 
+                   "1" = as.numeric(happylessthanone),
+                   "2" = as.numeric(happyonetotwo),
+                   "3" = as.numeric(happytwotofive),
+                   "4" = as.numeric(happyfivetoten),
+                   "5" = as.numeric(happytentotwenty),
+                   "6" = as.numeric(happytwentyplus))
+    
+    
    happy_plot(data)
   })
   
