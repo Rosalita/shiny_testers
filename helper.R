@@ -36,6 +36,12 @@ WorkplaceHappinessIndex <- pos_score+neg_score
 # bind the Workplace Happiness Index onto the end of mydata
 mydata <- cbind(mydata[,],WorkplaceHappinessIndex)
 
+experience <- (mydata[,14])
+levels(experience)
+explevels <- factor(experience, levels(experience)[c(6,2,4,5,3,7)])
+explevels <- levels(explevels)
+
+
 #make indexes for experience groups
 lessthanone <- which(mydata[,14] == "less than a year")
 onetotwo <- which(mydata[,14] == "1 - 2 years")

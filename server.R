@@ -19,12 +19,15 @@ shinyServer(function(input, output){
   output$text1 <- renderText({ 
     
   
-    paste(input$exp)
+    paste0(input$exp)
     
   })
   
   
   output$plot <- renderPlot({
+    if(is.null(input$exp))
+      return()
+
     
     data <- switch(input$exp, 
                    "1" = as.numeric(happylessthanone),

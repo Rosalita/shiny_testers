@@ -4,7 +4,7 @@
 
 #setwd ("/Dev/Git/shiny_testers") 
 setwd("/git/shiny_testers")
-getwd()
+
 
 #Read data
 mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
@@ -21,17 +21,27 @@ shinyUI(pageWithSidebar(
   headerPanel("Happy Testers"),
   sidebarPanel(
     h4("Define the group of Software Testers to examine"),
-    selectInput("exp",
-                label = "1. Experience",
-                choices = list("> 1 year" = "1", 
-                "1 - 2 years" = "2",
-                "2 - 5 years" = "3", 
-                "5 - 10 years" = "4", 
-                "10 - 20 years" = "5",
-                "20 + years" = "6"),
-                       selected	= "1"
-                       )
     
+    
+   # selectInput("exp",
+  #              label = "1. Experience",
+  #              choices = list("> 1 year" = "1", 
+  #              "1 - 2 years" = "2",
+  #              "2 - 5 years" = "3", 
+  #              "5 - 10 years" = "4", 
+  #              "10 - 20 years" = "5",
+  #              "20 + years" = "6"),
+  #                     selected	= "1"
+  #                     )
+    
+  checkboxGroupInput("exp", 
+                     label = "1. Experience", 
+                     # column 14 is experience
+                     choices = explevels,
+                     selected = c("1","2","3","4","5","6"), 
+                     inline = FALSE, 
+                     width = NULL)
+  
    
   #  radioButtons(inputId = "checkHappy", 
   #               label = "2. Is Happy?", 
