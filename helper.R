@@ -65,7 +65,7 @@ happy_plot <- function(x){
   )
   axis(1, at = seq(-12, 12, by = 1))
   abline(v = mean(x), col = "black", lty = 5, lwd = 2)
-  legend(-12,15,
+  legend("topleft",
          legend=paste0("mean = ", round(mean(x), digits=1)), 
          col = "black", 
          lty = 5, 
