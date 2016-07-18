@@ -1,9 +1,12 @@
-setwd("/git/shiny_testers")
+
+setwd ("/Dev/Git/shiny_testers") 
+#setwd("/git/shiny_testers")
 
 library(shiny) # load shiny
 
 #Read data
-mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+#mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
 
 # Make an index of all the people which currently work in testing
 # People that currently do not work in testing have been excluded 
@@ -41,6 +44,12 @@ levels(experience)
 explevels <- factor(experience, levels(experience)[c(6,2,4,5,3,7)])
 explevels <- levels(explevels)
 
+make_index <- function(input, col){
+  
+  ind <- which(mydata[,col] == input)
+  return(ind)
+  
+} 
 
 #make indexes for experience groups
 lessthanone <- which(mydata[,14] == "less than a year")
