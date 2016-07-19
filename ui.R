@@ -73,7 +73,20 @@ shinyUI(pageWithSidebar(
     textOutput("text1"),
     br(),
     "This is the plot",
-    plotOutput("plot")
+    plotOutput("happyplot"),
+    
+    fluidRow(
+      
+      column(3,
+             h3("first")),
+      column(3,
+             h3("second")),
+      column(3,
+             h3("third")),
+      column(3,
+             h3("fourth"))
+      
+    ) 
     
   )
   

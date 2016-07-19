@@ -30,7 +30,7 @@ shinyServer(function(input, output){
   })
   
   
-  output$plot <- renderPlot({
+  output$happyplot <- renderPlot({
     if(is.null(input$exp))
       return()
 
