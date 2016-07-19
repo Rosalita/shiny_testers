@@ -78,7 +78,9 @@ shinyUI(pageWithSidebar(
     fluidRow(
       
       column(3,
-             h3("first")),
+             h3("first"),
+             plotOutput("expectations")
+             ),
       column(3,
              h3("second")),
       column(3,

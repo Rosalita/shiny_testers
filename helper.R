@@ -59,10 +59,10 @@ make_index <- function(input, col){
   
 } 
 
-apply_index_to_happy <- function(index){
+apply_index <- function(index, col){
   # remove 0's from this index if there are any
   index_to_plot <- index[index != 0]
-  data <- mydata[index_to_plot,54]
+  data <- mydata[index_to_plot,col]
   return(data)
 }
 

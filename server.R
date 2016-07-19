@@ -39,11 +39,24 @@ shinyServer(function(input, output){
     
     index_to_plot <- make_index(input$exp,col)
     
-    data <- apply_index_to_happy(index_to_plot)
+    #column containing happiness index is 54
+    data <- apply_index(index_to_plot, 54)
     
     happy_plot(data)
   })
   
+  output$expectations <- renderPlot({
+    
+   
+    col <- 14
+    index_to_plot <- make_index(input$exp, col)
+    
+    #column containing expectations data is 30
+    data <- apply_index(index_to_plot, 30)
+    
+    print(data)
+    #make_pie()
+  })
   
 })
 
