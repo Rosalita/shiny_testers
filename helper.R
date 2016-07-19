@@ -46,33 +46,33 @@ explevels <- levels(explevels)
 
 make_index <- function(input, col){
   
-  ind <- which(mydata[,col] == input)
-  return(ind)
+ ind1 <- which(mydata[,col] == input[1])
+ ind2 <- which(mydata[,col] == input[2])
+ ind3 <- which(mydata[,col] == input[3])
+ ind4 <- which(mydata[,col] == input[4])
+ ind5 <- which(mydata[,col] == input[5])
+ ind6 <- which(mydata[,col] == input[6])
+
+ index_to_plot <- c(ind1,ind2,ind3,ind4,ind5,ind6)
+ 
+ return(index_to_plot)
   
 } 
 
-#make indexes for experience groups
-lessthanone <- which(mydata[,14] == "less than a year")
-onetotwo <- which(mydata[,14] == "1 - 2 years")
-twotofive <- which(mydata[,14] == "2 - 5 years")
-fivetoten <- which(mydata[,14] == "5 - 10 years")
-tentotwenty <- which(mydata[,14] == "10 - 20 years")
-twentyplus <- which(mydata[,14] == "More than 20 years")
-
-#apply these indexes to the workplace happiness column
-happylessthanone <- mydata[lessthanone,54]
-happyonetotwo <- mydata[onetotwo,54]
-happytwotofive <- mydata[twotofive, 54]
-happyfivetoten <- mydata[fivetoten, 54]
-happytentotwenty <- mydata[tentotwenty, 54]
-happytwentyplus <- mydata[twentyplus, 54]
-
+apply_index_to_happy <- function(index){
+  # remove 0's from this index if there are any
+  index_to_plot <- index[index != 0]
+  data <- mydata[index_to_plot,54]
+  return(data)
+}
+  
 # Function to plot the Happiness of x
 happy_plot <- function(x){
-  breaks <- c(min(x):max(x))
-  hist(x, 
+  
+ breaks <- c(min(x):max(x))
+  hist(subset, 
        breaks = breaks,
-       xlim = c(-12,12),
+      xlim = c(-12,12),
        xlab = "Workplace Happiness Index",
        col = rainbow(20),
        xaxt = "n",
@@ -86,12 +86,5 @@ happy_plot <- function(x){
          lty = 5, 
          lwd = 2)
 }
-
-happy_plot(happylessthanone)
-happy_plot(happyonetotwo)
-happy_plot(happytwotofive)
-happy_plot(happyfivetoten)
-happy_plot(happytentotwenty)
-happy_plot(happytwentyplus)
 
 

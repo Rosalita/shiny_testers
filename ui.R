@@ -41,7 +41,7 @@ shinyUI(pageWithSidebar(
                      label = "1. Experience", 
                      # column 14 is experience
                      choices = explevels,
-                     selected = c("1","2","3","4","5","6"), 
+                     selected = "less than one", 
                      inline = FALSE, 
                      width = NULL)
   
