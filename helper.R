@@ -65,14 +65,15 @@ apply_index_to_happy <- function(index){
   data <- mydata[index_to_plot,54]
   return(data)
 }
+
   
 # Function to plot the Happiness of x
 happy_plot <- function(x){
   
  breaks <- c(min(x):max(x))
-  hist(subset, 
+  hist(x, 
        breaks = breaks,
-      xlim = c(-12,12),
+       xlim = c(-12,12),
        xlab = "Workplace Happiness Index",
        col = rainbow(20),
        xaxt = "n",
@@ -87,4 +88,9 @@ happy_plot <- function(x){
          lwd = 2)
 }
 
+test_plot <- function(x){
+  hist(x)
+}
 
+ x <- c(3,9,4,4,-2,8,5,-4,8,7,-4,0,4)
+x

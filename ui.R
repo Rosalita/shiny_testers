@@ -69,9 +69,9 @@ shinyUI(pageWithSidebar(
   
   
   mainPanel(
-    "Experience Group Selected:",
+    "Data to be plotted:",
     textOutput("text1"),
-
+    br(),
     "This is the plot",
     plotOutput("plot")
     
