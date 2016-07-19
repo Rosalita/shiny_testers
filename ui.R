@@ -2,14 +2,14 @@
 # A shiny web app - ui.R #
 ##########################
 
-setwd ("/Dev/Git/shiny_testers") 
-#setwd("/git/shiny_testers")
+#setwd ("/Dev/Git/shiny_testers") 
+setwd("/git/shiny_testers")
 
 getwd()
 
 #Read data
-mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
-#mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+#mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
 
 
 #Include the R code in helper.R
@@ -69,24 +69,21 @@ shinyUI(pageWithSidebar(
   
   
   mainPanel(
-    "Data to be plotted:",
-    textOutput("text1"),
-    br(),
-    "This is the plot",
+   
     plotOutput("happyplot"),
     
     fluidRow(
       
-      column(3,
-             h3("first"),
+      column(4,
              plotOutput("expectations")
              ),
-      column(3,
-             h3("second")),
-      column(3,
-             h3("third")),
-      column(3,
-             h3("fourth"))
+      column(4,
+             plotOutput("team")
+             ),
+      column(4,
+             plotOutput("decisions")
+             )
+      
       
     ) 
     

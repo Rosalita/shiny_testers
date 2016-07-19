@@ -1,12 +1,12 @@
 
-setwd ("/Dev/Git/shiny_testers") 
-#setwd("/git/shiny_testers")
+#setwd ("/Dev/Git/shiny_testers") 
+setwd("/git/shiny_testers")
 
 library(shiny) # load shiny
 
 #Read data
-mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
-#mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+#mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
 
 # Make an index of all the people which currently work in testing
 # People that currently do not work in testing have been excluded 
@@ -88,9 +88,18 @@ happy_plot <- function(x){
          lwd = 2)
 }
 
-test_plot <- function(x){
-  hist(x)
+make_bar <- function(x, text){
+  x <- as.logical(x)
+  datatable <- table(x)
+  
+  # Change axis orientation
+  par(las = 2)
+  barplot(datatable,
+          col = c("red", "cyan"),
+          main = text,
+          ylim = c(0,180),
+          xlim = c(0,3))
+  
 }
 
- x <- c(3,9,4,4,-2,8,5,-4,8,7,-4,0,4)
-x
+x <- c(TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,TRUE)
