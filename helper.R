@@ -108,10 +108,19 @@ make_bar <- function(x, text){
        datatable[2] <- y
        datatable[1] <- 0
        
+     } 
+    
+     if (all(!x)){ # if all the data to plot is FALSE
+       print("all values are false")
+       
+       # Append a 0 to the table
+       datatable <- append(datatable,0)
+       
+       # Add the missing TRUE name
+       names(datatable) <- c("FALSE", "TRUE")
      }
    }
 
-  
   
   totals <- as.numeric(datatable[1:2])
   
@@ -133,5 +142,5 @@ make_bar <- function(x, text){
 
 
 
-x <- c(TRUE,TRUE,TRUE)
+x <- c(FALSE,FALSE,FALSE)
 
