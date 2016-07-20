@@ -1,12 +1,12 @@
 
-#setwd ("/Dev/Git/shiny_testers") 
-setwd("/git/shiny_testers")
+setwd ("/Dev/Git/shiny_testers") 
+#setwd("/git/shiny_testers")
 
 library(shiny) # load shiny
 
 #Read data
-#mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
-mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+#mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
 
 # Make an index of all the people which currently work in testing
 # People that currently do not work in testing have been excluded 
@@ -89,17 +89,49 @@ happy_plot <- function(x){
 }
 
 make_bar <- function(x, text){
-  x <- as.logical(x)
-  datatable <- table(x)
+ 
+  
+   x <- as.logical(x)
+   datatable <- table(x)
+ 
+   if (length(x) > 0){ # if one of the check boxes has been selected
+     if (all(x)){ # and the data to plot is all TRUE values
+       
+       # Append a 0 to the table
+       datatable <- append(datatable,0)
+       
+       # change table names to be the correct way around 
+       names(datatable) <- c("FALSE", "TRUE")
+       
+       #swapping existing value and 0 into right places so all plots remain consistent
+       y <- datatable[1] 
+       datatable[2] <- y
+       datatable[1] <- 0
+       
+     }
+   }
+
+  
+  
+  totals <- as.numeric(datatable[1:2])
+  
+  length(x)
+  
+  perc <- round((totals / length(x)) * 100, digits = 1)
+  perc <- paste0(perc, "%")
   
   # Change axis orientation
   par(las = 2)
-  barplot(datatable,
-          col = c("red", "cyan"),
+  midpoints <- barplot(datatable,
+          col = c("magenta", "cyan"),
           main = text,
           ylim = c(0,180),
-          xlim = c(0,3))
-  
+          xlim = c(0,2.5))
+ text(midpoints, 3, totals ,cex=1, pos=3) 
+ text(midpoints, 3, perc ,cex=1, pos=3, offset = 16.2) 
 }
 
-x <- c(TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE,TRUE,FALSE,TRUE,TRUE)
+
+
+x <- c(TRUE,TRUE,TRUE)
+
