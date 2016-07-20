@@ -44,16 +44,27 @@ levels(experience)
 explevels <- factor(experience, levels(experience)[c(6,2,4,5,3,7)])
 explevels <- levels(explevels)
 
-make_index <- function(input, col){
-  
- ind1 <- which(mydata[,col] == input[1])
- ind2 <- which(mydata[,col] == input[2])
- ind3 <- which(mydata[,col] == input[3])
- ind4 <- which(mydata[,col] == input[4])
- ind5 <- which(mydata[,col] == input[5])
- ind6 <- which(mydata[,col] == input[6])
-
- index_to_plot <- c(ind1,ind2,ind3,ind4,ind5,ind6)
+make_index <- function(input1, input2, col1, col2){
+ 
+ # following rows deal with 6 experience checkboxes   
+ ind1 <- which(mydata[,col1] == input1[1])
+ ind2 <- which(mydata[,col1] == input1[2])
+ ind3 <- which(mydata[,col1] == input1[3])
+ ind4 <- which(mydata[,col1] == input1[4])
+ ind5 <- which(mydata[,col1] == input1[5])
+ ind6 <- which(mydata[,col1] == input1[6])
+ 
+ if (input2 =="both"){
+   ind7 <- which (mydata[,col2] == "Yes")
+   ind8 <- which (mydata[,col2] == "No") 
+   ind7 <- c(ind7, ind8)
+ } else if (input2 == "Yes"){
+   ind7 <- which (mydata[,col2] == "Yes")
+ } else {
+   ind7 <- which (mydata[,col2] == "No")
+ }
+ 
+ index_to_plot <- c(ind1,ind2,ind3,ind4,ind5,ind6,ind7)
  
  return(index_to_plot)
   

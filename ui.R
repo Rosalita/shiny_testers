@@ -21,7 +21,7 @@ library(shiny) # load shiny
 
 shinyUI(pageWithSidebar(
   
-  headerPanel("Happy Testers"),
+  headerPanel("Happy Software Testers"),
   
   sidebarPanel(
     h4("Define a group of Software Testers to examine"),
@@ -37,15 +37,14 @@ shinyUI(pageWithSidebar(
                                   "10 - 20 years",
                                   "More than 20 years"),
                      inline = FALSE, 
-                     width = NULL)
-  
+                     width = NULL),
    
-  #  radioButtons(inputId = "checkHappy", 
-  #               label = "2. Is Happy?", 
-  #               c("Both Yes and No Groups" = "yn",
-  #                 "Yes Group" = "y", 
-  #                 "No Group" = "n")
-  #               ),
+    radioButtons(inputId = "happy", 
+                 label = "2. Says they are happy?", 
+                 c("Both Yes and No Groups" = "both",
+                   "Yes Group" = "Yes", 
+                   "No Group" = "No")
+                 )
     
   #  checkboxGroupInput(inputId = "checkQual",
   #                     label = "3. Highest Qualification",
