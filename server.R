@@ -82,6 +82,41 @@ shinyServer(function(input, output){
     make_bar(data, "I am usually \nexcluded when \ndecisions are made")
   })
   
+  output$cares <- renderPlot({
+    
+    #column containing experience data is 14
+    col <- 14
+    index_to_plot <- make_index(input$exp, col)
+    
+    #column containing cares data is 33
+    data <- apply_index(index_to_plot, 33)
+    
+    make_bar(data, "Absolutely everyone \nI work with cares \nabout quality")
+  })
+  
+  output$auto <- renderPlot({
+    
+    #column containing experience data is 14
+    col <- 14
+    index_to_plot <- make_index(input$exp, col)
+    
+    #column containing auto data is 34
+    data <- apply_index(index_to_plot, 34)
+    
+    make_bar(data, "There is no \nautomated testing")
+  })
+  
+  output$bugcount <- renderPlot({
+    
+    #column containing experience data is 14
+    col <- 14
+    index_to_plot <- make_index(input$exp, col)
+    
+    #column containing bug count data is 35
+    data <- apply_index(index_to_plot, 35)
+    
+    make_bar(data, "My performance is \nmeasured using metrics \nlike bug count")
+  })
   
 })
 
