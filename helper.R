@@ -90,7 +90,6 @@ happy_plot <- function(x){
 
 make_bar <- function(x, text){
  
-  
    x <- as.logical(x)
    datatable <- table(x)
  
@@ -141,6 +140,4 @@ make_bar <- function(x, text){
 }
 
 
-
-x <- c(FALSE,FALSE,FALSE)
 

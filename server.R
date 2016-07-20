@@ -22,6 +22,8 @@ shinyServer(function(input, output){
     #column containing experience data is 14
     col <- 14
     
+    print(input$exp)
+    
     index_to_plot <- make_index(input$exp,col)
     
     #column containing happiness index is 54
@@ -117,6 +119,222 @@ shinyServer(function(input, output){
     
     make_bar(data, "My performance is \nmeasured using metrics \nlike bug count")
   })
+  
+  output$tools <- renderPlot({
+    
+    #column containing experience data is 14
+    col <- 14
+    index_to_plot <- make_index(input$exp, col)
+    
+    #column containing bug count data is 36
+    data <- apply_index(index_to_plot, 36)
+    
+    make_bar(data, "I have access to \nall the tools and \nresources I require")
+  })
+  
+  output$tech <- renderPlot({
+    
+    #column containing experience data is 14
+    col <- 14
+    index_to_plot <- make_index(input$exp, col)
+    
+    #column containing tech data is 37
+    data <- apply_index(index_to_plot, 37)
+    
+    make_bar(data, "I feel my employer\n values my \ntechnical skills")
+  })
+  
+  output$kept_in_dark <- renderPlot({
+    
+    #column containing experience data is 14
+    col <- 14
+    index_to_plot <- make_index(input$exp, col)
+    
+    #column containing kept in dark data is 38
+    data <- apply_index(index_to_plot, 38)
+    
+    make_bar(data, "People dont share\n important information \nwith me")
+  })
+  
+  output$collaboration <- renderPlot({
+    
+    #column containing experience data is 14
+    col <- 14
+    index_to_plot <- make_index(input$exp, col)
+    
+    #column containing collaboration data is 39
+    data <- apply_index(index_to_plot, 39)
+    
+    make_bar(data, "I get to work \ncollaboratively \nwith others")
+  })
+  
+  output$techdebt <- renderPlot({
+    
+    #column containing experience data is 14
+    col <- 14
+    index_to_plot <- make_index(input$exp, col)
+    
+    #column containing techdebt data is 40
+    data <- apply_index(index_to_plot, 40)
+    
+    make_bar(data, "Technical debt is \ntaken seriously \nand addressed")
+  })
+  
+  output$progress <- renderPlot({
+    
+    #column containing experience data is 14
+    col <- 14
+    index_to_plot <- make_index(input$exp, col)
+    
+    #column containing progress data is 41
+    data <- apply_index(index_to_plot, 41)
+    
+    make_bar(data, "I feel there are \nopportunities for \nme to progress")
+  })
+  output$appreciate <- renderPlot({
+    
+    #column containing experience data is 14
+    col <- 14
+    index_to_plot <- make_index(input$exp, col)
+    
+    #column containing appreciate data is 42
+    data <- apply_index(index_to_plot, 42)
+    
+    make_bar(data, "People at work don't\n appreciate the role \ntesting plays")
+  })
+  
+  output$loyal <- renderPlot({
+    
+    #column containing experience data is 14
+    col <- 14
+    index_to_plot <- make_index(input$exp, col)
+    
+    #column containing loyal data is 43
+    data <- apply_index(index_to_plot, 43)
+    
+    make_bar(data, "There are high \nlevels of staff \nretention")
+  })
+  
+  output$trusted <- renderPlot({
+    
+    #column containing experience data is 14
+    col <- 14
+    index_to_plot <- make_index(input$exp, col)
+    
+    #column containing judgment data is 44
+    data <- apply_index(index_to_plot, 44)
+    
+    make_bar(data, "When I make a \ndecision my judgment\n is trusted")
+  })
+  
+  output$prodbreaks <- renderPlot({
+    
+    #column containing experience data is 14
+    col <- 14
+    index_to_plot <- make_index(input$exp, col)
+    
+    #column containing prod breaks data is 45
+    data <- apply_index(index_to_plot, 45)
+    
+    make_bar(data, "Code in production\n frequently breaks \nand needs fixing")
+  })
+  
+  output$unpaid <- renderPlot({
+    
+    #column containing experience data is 14
+    col <- 14
+    index_to_plot <- make_index(input$exp, col)
+    
+    #column containing unpaid data is 46
+    data <- apply_index(index_to_plot, 46)
+    
+    make_bar(data, "I am expected \nto work unpaid \novertime")
+  })
+  
+  output$dev <- renderPlot({
+    
+    #column containing experience data is 14
+    col <- 14
+    index_to_plot <- make_index(input$exp, col)
+    
+    #column containing dev data is 47
+    data <- apply_index(index_to_plot, 47)
+    
+    make_bar(data, "At work developers\n are seen as superior\n to testers")
+  })
+  
+  output$sign <- renderPlot({
+    
+    #column containing experience data is 14
+    col <- 14
+    index_to_plot <- make_index(input$exp, col)
+    
+    #column containing sign data is 48
+    data <- apply_index(index_to_plot, 48)
+    
+    make_bar(data, "I am forced to\n sign off that there\n are no bugs")
+  })
+  
+  output$train <- renderPlot({
+    
+    #column containing experience data is 14
+    col <- 14
+    index_to_plot <- make_index(input$exp, col)
+    
+    #column containing sign data is 49
+    data <- apply_index(index_to_plot, 49)
+    
+    make_bar(data, "My company supports \nme with training \ncourses and conferences")
+  })
+  
+  output$difference <- renderPlot({
+    
+    #column containing experience data is 14
+    col <- 14
+    index_to_plot <- make_index(input$exp, col)
+    
+    #column containing difference data is 50
+    data <- apply_index(index_to_plot, 50)
+    
+    make_bar(data, "I feel like \nI am making a \npositive difference")
+  })
+  
+  output$management <- renderPlot({
+    
+    #column containing experience data is 14
+    col <- 14
+    index_to_plot <- make_index(input$exp, col)
+    
+    #column containing management data is 51
+    data <- apply_index(index_to_plot, 51)
+    
+    make_bar(data, "Management does\n not understand\n testing")
+  })
+  
+  output$time <- renderPlot({
+    
+    #column containing experience data is 14
+    col <- 14
+    index_to_plot <- make_index(input$exp, col)
+    
+    #column containing time data is 52
+    data <- apply_index(index_to_plot, 52)
+    
+    make_bar(data, "There is not enough\n time to test things\n satisfactorily")
+  })
+  
+  output$blamed <- renderPlot({
+    
+    #column containing experience data is 14
+    col <- 14
+    index_to_plot <- make_index(input$exp, col)
+    
+    #column containing blamed data is 53
+    data <- apply_index(index_to_plot, 53)
+    
+    make_bar(data, "I am blamed\n for missed bugs")
+  })
+  
   
 })
 

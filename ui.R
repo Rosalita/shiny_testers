@@ -22,14 +22,20 @@ library(shiny) # load shiny
 shinyUI(pageWithSidebar(
   
   headerPanel("Happy Testers"),
+  
   sidebarPanel(
-    h4("Define the group of Software Testers to examine"),
+    h4("Define a group of Software Testers to examine"),
     
   checkboxGroupInput("exp", 
                      label = "1. Experience", 
                      # column 14 is experience
                      choices = explevels,
-                     selected = "less than one", 
+                     selected = c("less than a year", 
+                                  "1 - 2 years", 
+                                  "2 - 5 years",
+                                  "5 - 10 years",
+                                  "10 - 20 years",
+                                  "More than 20 years"),
                      inline = FALSE, 
                      width = NULL)
   
@@ -57,38 +63,62 @@ shinyUI(pageWithSidebar(
   
   
   mainPanel(
-   
-    plotOutput("happyplot"),
     
-    fluidRow(
-      
-      column(4,
-             plotOutput("expectations")
-             ),
-      column(4,
-             plotOutput("team")
-             ),
-      column(4,
-             plotOutput("decisions")
-             )
-    ),
-    
-    fluidRow(
-      
-      column(4,
-             plotOutput("cares")
-             ),
-      column(4,
-             plotOutput("auto")
+   tabsetPanel(
+     
+     tabPanel("Happiness Histogram",plotOutput("happyplot")),
+     
+     tabPanel("Questions 1", 
+        fluidRow(
+          column(4,plotOutput("expectations")),
+          column(4,plotOutput("team")),
+          column(4,plotOutput("decisions"))
+          ),
+        fluidRow(
+          column(4,plotOutput("cares")),
+          column(4,plotOutput("auto")),
+          column(4,plotOutput("bugcount"))
+          )
+     ),
+     
+     tabPanel("Questions 2", 
+        fluidRow(
+          column(4,plotOutput("tools")),
+          column(4,plotOutput("tech")),
+          column(4,plotOutput("kept_in_dark"))
+          ),
+        fluidRow(
+          column(4,plotOutput("collaboration")),
+          column(4,plotOutput("techdebt")),
+          column(4,plotOutput("progress"))
+        )
       ),
-      column(4,
-             plotOutput("bugcount")
-      )
+     
+     tabPanel("Questions 3",
+        fluidRow(
+          column(4,plotOutput("appreciate")),
+          column(4,plotOutput("loyal")),
+          column(4,plotOutput("trusted"))
+          ),
+        fluidRow(
+          column(4,plotOutput("prodbreaks")),
+          column(4,plotOutput("unpaid")),
+          column(4,plotOutput("dev"))
+        )
+      ),
+     tabPanel("Questions 4",
+        fluidRow(
+          column(4,plotOutput("sign")),
+          column(4,plotOutput("train")),
+          column(4,plotOutput("difference"))
+        ),
+        fluidRow(
+          column(4,plotOutput("management")),
+          column(4,plotOutput("time")),
+          column(4,plotOutput("blamed"))
+        )
+     )
     )
-    
-    
-    
-  )
-  
+   )
 ))
 
