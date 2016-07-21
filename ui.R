@@ -29,7 +29,7 @@ shinyUI(pageWithSidebar(
   checkboxGroupInput("exp", 
                      label = "1. Experience", 
                      # column 14 is experience
-                     choices = explevels,
+                     choices = explevels, #explevels is defined in helper.R
                      selected = c("less than a year", 
                                   "1 - 2 years", 
                                   "2 - 5 years",
@@ -45,19 +45,21 @@ shinyUI(pageWithSidebar(
                  c("Both Yes and No Groups" = "b",
                    "Yes Group" = "Yes", 
                    "No Group" = "No")
-                 )
+                 ),
     
-  #  checkboxGroupInput(inputId = "checkQual",
-  #                     label = "3. Highest Qualification",
-  #                     choices = list("None" = "1", 
-  #                                    "GCSE or equivalent" = "2",
-  #                                    "A Level or equivalent" = "3", 
-  #                                    "Foundation Course or equivalent" = "4", 
-  #                                    "Bachelors degree" = "5",
-  #                                    "Masters degree" = "6",
-  #                                    "Doctorate" = "7"),
-  #                     selected	= c("1","2","3","4","5","6","7")
-  #  )
+    checkboxGroupInput(inputId = "quals",
+                       label = "3. Highest Qualification",
+                       choices = quals, #quals is defined in helper.R
+                       selected= c("None",
+                                   "GCSEs or equivalent",
+                                   "A-Levels or equivalent", 
+                                   "Foundation course", 
+                                   "Bachelors degree",
+                                   "Masters degree",
+                                   "Doctorate"),
+                       inline = FALSE, 
+                       width = NULL)
+    
   ),
   
   

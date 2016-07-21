@@ -25,8 +25,10 @@ shinyServer(function(input, output){
     #column containing are you happy in current job is 8
     col2 <- 8
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
-    
+    #column containing quals is 17
+    col3 <- 17
+  
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing happiness index is 54
     data_to_plot <- apply_index(index_to_plot, 54)
@@ -41,11 +43,12 @@ shinyServer(function(input, output){
 
     #column containing experience data is 14
     col1 <- 14
-    
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing happiness index is 54
     data <- apply_index(index_to_plot, 54)
@@ -59,8 +62,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing expectations data is 30
     data <- apply_index(index_to_plot, 30)
@@ -74,8 +79,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing team data is 31
     data <- apply_index(index_to_plot, 31)
@@ -89,8 +96,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing decision data is 32
     data <- apply_index(index_to_plot, 32)
@@ -104,8 +113,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing cares data is 33
     data <- apply_index(index_to_plot, 33)
@@ -119,8 +130,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing auto data is 34
     data <- apply_index(index_to_plot, 34)
@@ -134,8 +147,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing bug count data is 35
     data <- apply_index(index_to_plot, 35)
@@ -149,8 +164,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing bug count data is 36
     data <- apply_index(index_to_plot, 36)
@@ -164,8 +181,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing tech data is 37
     data <- apply_index(index_to_plot, 37)
@@ -179,8 +198,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing kept in dark data is 38
     data <- apply_index(index_to_plot, 38)
@@ -194,8 +215,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing collaboration data is 39
     data <- apply_index(index_to_plot, 39)
@@ -209,8 +232,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing techdebt data is 40
     data <- apply_index(index_to_plot, 40)
@@ -224,8 +249,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing progress data is 41
     data <- apply_index(index_to_plot, 41)
@@ -238,8 +265,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing appreciate data is 42
     data <- apply_index(index_to_plot, 42)
@@ -253,8 +282,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing loyal data is 43
     data <- apply_index(index_to_plot, 43)
@@ -268,8 +299,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing judgment data is 44
     data <- apply_index(index_to_plot, 44)
@@ -283,8 +316,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing prod breaks data is 45
     data <- apply_index(index_to_plot, 45)
@@ -298,8 +333,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing unpaid data is 46
     data <- apply_index(index_to_plot, 46)
@@ -313,8 +350,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing dev data is 47
     data <- apply_index(index_to_plot, 47)
@@ -328,8 +367,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing sign data is 48
     data <- apply_index(index_to_plot, 48)
@@ -343,8 +384,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing sign data is 49
     data <- apply_index(index_to_plot, 49)
@@ -358,8 +401,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing difference data is 50
     data <- apply_index(index_to_plot, 50)
@@ -373,8 +418,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing management data is 51
     data <- apply_index(index_to_plot, 51)
@@ -388,8 +435,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing time data is 52
     data <- apply_index(index_to_plot, 52)
@@ -403,8 +452,10 @@ shinyServer(function(input, output){
     col1 <- 14
     #column containing are you happy in current job is 8
     col2 <- 8
+    #column containing quals is 17
+    col3 <- 17
     
-    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,col1,col2,col3)
     
     #column containing blamed data is 53
     data <- apply_index(index_to_plot, 53)

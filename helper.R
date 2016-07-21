@@ -39,13 +39,27 @@ WorkplaceHappinessIndex <- pos_score+neg_score
 # bind the Workplace Happiness Index onto the end of mydata
 mydata <- cbind(mydata[,],WorkplaceHappinessIndex)
 
+#extract the levels of experience so these can be used on the ui
 experience <- (mydata[,14])
+#check levels
 levels(experience)
+#looks like they are arranged alphabetically so change order from shortest to longest instead
+# Also don't include level 1 because this is just blank ""
 explevels <- factor(experience, levels(experience)[c(6,2,4,5,3,7)])
 explevels <- levels(explevels)
 
-make_index <- function(input1,input2,col1,col2){
+#extract the levels of qualifications so these can be used on the ui
+quals <- (mydata[,17])
+#check levels
+levels(quals)
+#looks like arrange alphabetically so change order to difficulty order instead
+# Also don't include level 1 because this is just blank ""
+quals <- factor(quals, levels(quals)[c(8,6,2,5,3,7,4)])
+quals <- levels(quals)  
   
+make_index <- function(input1,input2,input3,col1,col2,col3){
+
+ #make an index from experience checkbox selection    
  ind1 <- which(mydata[,col1] == input1[1])
  ind2 <- which(mydata[,col1] == input1[2])
  ind3 <- which(mydata[,col1] == input1[3])
@@ -55,19 +69,36 @@ make_index <- function(input1,input2,col1,col2){
 
  index_experience <- c(ind1,ind2,ind3,ind4,ind5,ind6)
 
+ #make an index from happy group radio button selection
  switch(input2[1], 
         "Yes"={index_happy <- which(mydata[,col2] == input2[1])},
         "No"={index_happy <- which(mydata[,col2] == input2[1])},
         "b"={index_happy <- which((mydata[,col2] == "Yes") | (mydata[,col2] == "No"))}
         )
   
- #combine indexes
- all <- c(index_happy, index_experience)
- # only interested in index which appear in both, ie. are duplicates
- multi_index <- all [duplicated(all)]
+ #make an index from qualification checkbox selection
+ ind1 <- which(mydata[,col3] == input3[1])
+ ind2 <- which(mydata[,col3] == input3[2])
+ ind3 <- which(mydata[,col3] == input3[3])
+ ind4 <- which(mydata[,col3] == input3[4])
+ ind5 <- which(mydata[,col3] == input3[5])
+ ind6 <- which(mydata[,col3] == input3[6])
+ ind7 <- which(mydata[,col3] == input3[7])
+ 
+ index_quals <- c(ind1,ind2,ind3,ind4,ind5,ind6,ind7)
+ 
+ # combine first two indexes
+ combined_index <- c(index_happy, index_experience)
+ 
+ # only care about in index numbers which appear in both these indexes, ie. are duplicates
+ dupes <- combined_index [duplicated(combined_index)]
 
-# note for three inputs may need to appy unique() to this
-# unique(all[duplicated(all)])
+ # combine the duplicate indexes with next index
+ combined_index <- c(dupes, index_quals) 
+ 
+ # final index will be the duplicate values in this combined index 
+ multi_index <- combined_index [duplicated(combined_index)]
+ 
 
  return(multi_index)
   
