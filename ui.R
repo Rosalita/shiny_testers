@@ -2,14 +2,14 @@
 # A shiny web app - ui.R #
 ##########################
 
-#setwd ("/Dev/Git/shiny_testers") 
-setwd("/git/shiny_testers")
+setwd ("/Dev/Git/shiny_testers") 
+#setwd("/git/shiny_testers")
 
 getwd()
 
 #Read data
-#mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
-mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+#mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
 
 
 #Include the R code in helper.R
@@ -37,15 +37,15 @@ shinyUI(pageWithSidebar(
                                   "10 - 20 years",
                                   "More than 20 years"),
                      inline = FALSE, 
-                     width = NULL)
+                     width = NULL),
   
    
-  #  radioButtons(inputId = "checkHappy", 
-  #               label = "2. Is Happy?", 
-  #               c("Both Yes and No Groups" = "yn",
-  #                 "Yes Group" = "y", 
-  #                 "No Group" = "n")
-  #               ),
+    radioButtons(inputId = "happy", 
+                 label = "2. States they are happy in current job", 
+                 c("Both Yes and No Groups" = "b",
+                   "Yes Group" = "Yes", 
+                   "No Group" = "No")
+                 )
     
   #  checkboxGroupInput(inputId = "checkQual",
   #                     label = "3. Highest Qualification",
@@ -66,7 +66,9 @@ shinyUI(pageWithSidebar(
     
    tabsetPanel(
      
-     tabPanel("Happiness Histogram",plotOutput("happyplot")),
+     tabPanel("Happiness Histogram",plotOutput("happyplot"),
+              textOutput("text1")
+              ),
      
      tabPanel("+ Questions 1", 
         fluidRow(

@@ -2,12 +2,12 @@
 # A shiny web app - server.R #
 ##############################
 
-#setwd ("/Dev/Git/shiny_testers")
-setwd("/git/shiny_testers")
+setwd ("/Dev/Git/shiny_testers")
+#setwd("/git/shiny_testers")
 
 #Read data
-#mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
-mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+#mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
 
 #Include the R code in helper.R
 source("helper.R")
@@ -20,11 +20,13 @@ shinyServer(function(input, output){
   output$text1 <- renderText({ 
     
     #column containing experience data is 14
-    col <- 14
+    col1 <- 14
     
-    print(input$exp)
+    #column containing are you happy in current job is 8
+    col2 <- 8
     
-    index_to_plot <- make_index(input$exp,col)
+    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
+    
     
     #column containing happiness index is 54
     data_to_plot <- apply_index(index_to_plot, 54)
@@ -38,9 +40,12 @@ shinyServer(function(input, output){
       return()
 
     #column containing experience data is 14
-    col <- 14
+    col1 <- 14
     
-    index_to_plot <- make_index(input$exp,col)
+    #column containing are you happy in current job is 8
+    col2 <- 8
+    
+    index_to_plot <- make_index(input$exp,input$happy,col1,col2)
     
     #column containing happiness index is 54
     data <- apply_index(index_to_plot, 54)
@@ -52,7 +57,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+    #index_to_plot <- make_index(input$exp, col)
     
     #column containing expectations data is 30
     data <- apply_index(index_to_plot, 30)
@@ -64,7 +69,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+    #index_to_plot <- make_index(input$exp, col)
     
     #column containing team data is 31
     data <- apply_index(index_to_plot, 31)
@@ -76,7 +81,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+    #index_to_plot <- make_index(input$exp, col)
     
     #column containing decision data is 32
     data <- apply_index(index_to_plot, 32)
@@ -88,7 +93,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+   # index_to_plot <- make_index(input$exp, col)
     
     #column containing cares data is 33
     data <- apply_index(index_to_plot, 33)
@@ -100,7 +105,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+  #  index_to_plot <- make_index(input$exp, col)
     
     #column containing auto data is 34
     data <- apply_index(index_to_plot, 34)
@@ -112,7 +117,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+   # index_to_plot <- make_index(input$exp, col)
     
     #column containing bug count data is 35
     data <- apply_index(index_to_plot, 35)
@@ -124,7 +129,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+   # index_to_plot <- make_index(input$exp, col)
     
     #column containing bug count data is 36
     data <- apply_index(index_to_plot, 36)
@@ -136,7 +141,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+   # index_to_plot <- make_index(input$exp, col)
     
     #column containing tech data is 37
     data <- apply_index(index_to_plot, 37)
@@ -148,7 +153,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+   # index_to_plot <- make_index(input$exp, col)
     
     #column containing kept in dark data is 38
     data <- apply_index(index_to_plot, 38)
@@ -160,7 +165,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+   # index_to_plot <- make_index(input$exp, col)
     
     #column containing collaboration data is 39
     data <- apply_index(index_to_plot, 39)
@@ -172,7 +177,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+   # index_to_plot <- make_index(input$exp, col)
     
     #column containing techdebt data is 40
     data <- apply_index(index_to_plot, 40)
@@ -184,7 +189,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+   # index_to_plot <- make_index(input$exp, col)
     
     #column containing progress data is 41
     data <- apply_index(index_to_plot, 41)
@@ -195,7 +200,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+   # index_to_plot <- make_index(input$exp, col)
     
     #column containing appreciate data is 42
     data <- apply_index(index_to_plot, 42)
@@ -207,7 +212,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+   # index_to_plot <- make_index(input$exp, col)
     
     #column containing loyal data is 43
     data <- apply_index(index_to_plot, 43)
@@ -219,7 +224,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+  #  index_to_plot <- make_index(input$exp, col)
     
     #column containing judgment data is 44
     data <- apply_index(index_to_plot, 44)
@@ -231,7 +236,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+  #  index_to_plot <- make_index(input$exp, col)
     
     #column containing prod breaks data is 45
     data <- apply_index(index_to_plot, 45)
@@ -243,7 +248,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+  #  index_to_plot <- make_index(input$exp, col)
     
     #column containing unpaid data is 46
     data <- apply_index(index_to_plot, 46)
@@ -255,7 +260,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+   # index_to_plot <- make_index(input$exp, col)
     
     #column containing dev data is 47
     data <- apply_index(index_to_plot, 47)
@@ -267,7 +272,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+  #  index_to_plot <- make_index(input$exp, col)
     
     #column containing sign data is 48
     data <- apply_index(index_to_plot, 48)
@@ -279,7 +284,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+  #  index_to_plot <- make_index(input$exp, col)
     
     #column containing sign data is 49
     data <- apply_index(index_to_plot, 49)
@@ -291,7 +296,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+  #  index_to_plot <- make_index(input$exp, col)
     
     #column containing difference data is 50
     data <- apply_index(index_to_plot, 50)
@@ -303,7 +308,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+   # index_to_plot <- make_index(input$exp, col)
     
     #column containing management data is 51
     data <- apply_index(index_to_plot, 51)
@@ -315,7 +320,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+  #  index_to_plot <- make_index(input$exp, col)
     
     #column containing time data is 52
     data <- apply_index(index_to_plot, 52)
@@ -327,7 +332,7 @@ shinyServer(function(input, output){
     
     #column containing experience data is 14
     col <- 14
-    index_to_plot <- make_index(input$exp, col)
+   # index_to_plot <- make_index(input$exp, col)
     
     #column containing blamed data is 53
     data <- apply_index(index_to_plot, 53)

@@ -1,12 +1,12 @@
 
-#setwd ("/Dev/Git/shiny_testers") 
-setwd("/git/shiny_testers")
+setwd ("/Dev/Git/shiny_testers") 
+#setwd("/git/shiny_testers")
 
 library(shiny) # load shiny
 
 #Read data
-#mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
-mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+#mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
 
 # Make an index of all the people which currently work in testing
 # People that currently do not work in testing have been excluded 
@@ -44,18 +44,32 @@ levels(experience)
 explevels <- factor(experience, levels(experience)[c(6,2,4,5,3,7)])
 explevels <- levels(explevels)
 
-make_index <- function(input, col){
+make_index <- function(input1,input2,col1,col2){
   
- ind1 <- which(mydata[,col] == input[1])
- ind2 <- which(mydata[,col] == input[2])
- ind3 <- which(mydata[,col] == input[3])
- ind4 <- which(mydata[,col] == input[4])
- ind5 <- which(mydata[,col] == input[5])
- ind6 <- which(mydata[,col] == input[6])
+ ind1 <- which(mydata[,col1] == input1[1])
+ ind2 <- which(mydata[,col1] == input1[2])
+ ind3 <- which(mydata[,col1] == input1[3])
+ ind4 <- which(mydata[,col1] == input1[4])
+ ind5 <- which(mydata[,col1] == input1[5])
+ ind6 <- which(mydata[,col1] == input1[6])
 
- index_to_plot <- c(ind1,ind2,ind3,ind4,ind5,ind6)
- 
- return(index_to_plot)
+ index_experience <- c(ind1,ind2,ind3,ind4,ind5,ind6)
+
+ switch(input2[1], 
+        "Yes"={index_happy <- which(mydata[,col2] == input2[1])},
+        "No"={index_happy <- which(mydata[,col2] == input2[1])},
+        "b"={index_happy <- which((mydata[,col2] == "Yes") | (mydata[,col2] == "No"))}
+        )
+  
+ #combine indexes
+ all <- c(index_happy, index_experience)
+ # only interested in index which appear in both, ie. are duplicates
+ multi_index <- all [duplicated(all)]
+
+# note for three inputs may need to appy unique() to this
+# unique(all[duplicated(all)])
+
+ return(multi_index)
   
 } 
 
@@ -69,8 +83,13 @@ apply_index <- function(index, col){
   
 # Function to plot the Happiness of x
 happy_plot <- function(x){
-  
- breaks <- c(min(x):max(x))
+
+  if(length(x) > 1){
+    breaks <- c(min(x):max(x))
+  } else {
+    breaks <- c(x,(x+1))
+  } 
+
   hist(x, 
        breaks = breaks,
        xlim = c(-12,12),
@@ -110,7 +129,6 @@ make_bar <- function(x, text){
      } 
     
      if (all(!x)){ # if all the data to plot is FALSE
-       print("all values are false")
        
        # Append a 0 to the table
        datatable <- append(datatable,0)
