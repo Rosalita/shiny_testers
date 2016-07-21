@@ -41,8 +41,15 @@ shinyServer(function(input, output){
   
   
   output$happyplot <- renderPlot({
-    if(is.null(input$exp))
+    
+    #if no checkboxes selected for experience, don't try to plot anything
+    if(is.null(input$exp)){
       return()
+    }
+    #if no checkboxes selected for qualifications, don't try to plot anything
+    if(is.null(input$quals)){
+      return()
+    }  
 
     #column containing experience data is 14
     col1 <- 14
@@ -54,6 +61,11 @@ shinyServer(function(input, output){
     col4 <- 18
     
     index_to_plot <- make_index(input$exp,input$happy,input$quals,input$comp,col1,col2,col3,col4)
+    
+    #if the index to plot contains no values, don't try to plot anything
+    if(length(index_to_plot) < 1){
+      return()
+    }
     
     #column containing happiness index is 54
     data <- apply_index(index_to_plot, 54)

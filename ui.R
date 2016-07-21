@@ -21,13 +21,13 @@ library(shiny) # load shiny
 
 shinyUI(pageWithSidebar(
   
-  headerPanel("Happy Testers"),
+  headerPanel("Explore a Sample of Software Testers"),
   
   sidebarPanel(
     h4("Define a group of Software Testers to examine"),
     
   checkboxGroupInput("exp", 
-                     label = "1. Experience", 
+                     label = "1. Testing Experience", 
                      # column 14 is experience
                      choices = explevels, #explevels is defined in helper.R
                      selected = c("less than a year", 
@@ -80,7 +80,7 @@ shinyUI(pageWithSidebar(
               textOutput("text1")
               ),
      
-     tabPanel("+ Questions 1", 
+     tabPanel("Positive 1", 
         fluidRow(
           column(4,plotOutput("expectations")),
           column(4,plotOutput("team")),
@@ -93,7 +93,7 @@ shinyUI(pageWithSidebar(
           )
      ),
      
-     tabPanel("+ Questions 2", 
+     tabPanel("Positive 2", 
         fluidRow(
           column(4,plotOutput("techdebt")),
           column(4,plotOutput("progress")),
@@ -106,7 +106,7 @@ shinyUI(pageWithSidebar(
         )
       ),
      
-     tabPanel("- Questions 1",
+     tabPanel("Negative 1",
         fluidRow(
           column(4,plotOutput("decisions")),
           column(4,plotOutput("auto")),
@@ -118,7 +118,7 @@ shinyUI(pageWithSidebar(
           column(4,plotOutput("prodbreaks"))
         )
       ),
-     tabPanel("- Questions 2",
+     tabPanel("Negative 2",
         fluidRow(
           column(4,plotOutput("unpaid")),
           column(4,plotOutput("dev")),
