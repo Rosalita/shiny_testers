@@ -57,7 +57,7 @@ levels(quals)
 quals <- factor(quals, levels(quals)[c(8,6,2,5,3,7,4)])
 quals <- levels(quals)  
   
-make_index <- function(input1,input2,input3,col1,col2,col3){
+make_index <- function(input1,input2,input3,input4,col1,col2,col3,col4){
 
  #make an index from experience checkbox selection    
  ind1 <- which(mydata[,col1] == input1[1])
@@ -87,20 +87,32 @@ make_index <- function(input1,input2,input3,col1,col2,col3){
  
  index_quals <- c(ind1,ind2,ind3,ind4,ind5,ind6,ind7)
  
+ #make an index from studied computing radio button selection
+ switch(input4[1], 
+        "Yes"={index_comp <- which(mydata[,col4] == input4[1])},
+        "No"={index_comp <- which(mydata[,col4] == input4[1])},
+        "b"={index_comp <- which((mydata[,col4] == "Yes") | (mydata[,col4] == "No"))}
+ )
+ 
  # combine first two indexes
  combined_index <- c(index_happy, index_experience)
  
- # only care about in index numbers which appear in both these indexes, ie. are duplicates
+ # only care about index numbers which appear in both these indexes, ie. are duplicates
  dupes <- combined_index [duplicated(combined_index)]
 
  # combine the duplicate indexes with next index
  combined_index <- c(dupes, index_quals) 
  
- # final index will be the duplicate values in this combined index 
- multi_index <- combined_index [duplicated(combined_index)]
+ # only care about index numbers which are duplicates  
+ dupes <- combined_index [duplicated(combined_index)]
  
+ # combine the duplicate indexes with next index
+ combined_index <- c(dupes, index_comp) 
+ 
+ # the duplicates in this combined index form the final index
+ final_index <- combined_index [duplicated(combined_index)]
 
- return(multi_index)
+ return(final_index)
   
 } 
 

@@ -58,7 +58,15 @@ shinyUI(pageWithSidebar(
                                    "Masters degree",
                                    "Doctorate"),
                        inline = FALSE, 
-                       width = NULL)
+                       width = NULL),
+  
+     radioButtons(inputId = "comp", 
+               label = "4. States they studied computing", 
+               c("Both Yes and No Groups" = "b",
+                 "Yes Group" = "Yes", 
+                 "No Group" = "No")
+               )
+  
     
   ),
   
