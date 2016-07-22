@@ -95,7 +95,7 @@ shinyUI(fluidPage(
           column(6,
                  checkboxGroupInput(inputId = "nottestjob",
                                     label = "5. Likelihood to seek a job outside of testing in next 12 months",
-                                    choices = testjoblevels, #testjoblevels is defined in helper.R
+                                    choices = nottestjoblevels, #nottestjoblevels is defined in helper.R
                                     selected= c("Very unlikely",
                                                 "Unlikely",
                                                 "Not sure", 

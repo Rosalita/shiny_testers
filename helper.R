@@ -63,7 +63,13 @@ levels(testjob)
 testjoblevels <- factor(testjob, levels(testjob)[c(6,4,3,2,5)])
 testjoblevels <- levels(testjoblevels)
 
-make_index <- function(input1,input2,input3,input4,col1,col2,col3,col4){
+#extract the levels of likelihood to look for a job outside of testing
+nottestjob <- (mydata[,10])
+levels(nottestjob)
+nottestjoblevels <- factor(nottestjob, levels(nottestjob)[c(6,4,3,2,5)])
+nottestjoblevels <- levels(nottestjoblevels)
+
+make_index <- function(input1,input2,input3,input4,input5,input6,col1,col2,col3,col4,col5,col6){
 
  #make an index from experience checkbox selection    
  ind1 <- which(mydata[,col1] == input1[1])
@@ -100,6 +106,26 @@ make_index <- function(input1,input2,input3,input4,col1,col2,col3,col4){
         "b"={index_comp <- which((mydata[,col4] == "Yes") | (mydata[,col4] == "No"))}
  )
  
+ #make an index for looking for test job
+ ind1 <- which(mydata[,col5] == input5[1])
+ ind2 <- which(mydata[,col5] == input5[2])
+ ind3 <- which(mydata[,col5] == input5[3])
+ ind4 <- which(mydata[,col5] == input5[4])
+ ind5 <- which(mydata[,col5] == input5[5])
+ 
+ index_testjob <- c(ind1,ind2,ind3,ind4,ind5)
+ 
+ 
+ #make an index for looking for a not test job
+ ind1 <- which(mydata[,col6] == input6[1])
+ ind2 <- which(mydata[,col6] == input6[2])
+ ind3 <- which(mydata[,col6] == input6[3])
+ ind4 <- which(mydata[,col6] == input6[4])
+ ind5 <- which(mydata[,col6] == input6[5])
+ 
+ index_nottestjob <- c(ind1,ind2,ind3,ind4,ind5)
+ 
+ 
  # combine first two indexes
  combined_index <- c(index_happy, index_experience)
  
@@ -115,9 +141,21 @@ make_index <- function(input1,input2,input3,input4,col1,col2,col3,col4){
  # combine the duplicate indexes with next index
  combined_index <- c(dupes, index_comp) 
  
- # the duplicates in this combined index form the final index
- final_index <- combined_index [duplicated(combined_index)]
+ # only care about index numbers which are duplicates  
+ dupes <- combined_index [duplicated(combined_index)]
 
+ # combine the duplicate indexes with next index
+ combined_index <- c(dupes, index_testjob) 
+ 
+ # only care about index numbers which are duplicates  
+ dupes <- combined_index [duplicated(combined_index)]
+ 
+ # combine the duplicate indexes with next index
+ combined_index <- c(dupes, index_nottestjob) 
+ 
+ # in final index only care about index numbers which are duplicates  
+ final_index <- combined_index [duplicated(combined_index)]
+ 
  return(final_index)
   
 } 

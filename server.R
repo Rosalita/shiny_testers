@@ -30,8 +30,14 @@ shinyServer(function(input, output){
     
     #column containing computing is 18
     col4 <- 18
+    
+    #column containing testjob is 9
+    col5 <- 9
+    
+    #column containing nottestjob is 10
+    col6 <- 10
   
-    index_to_plot <- make_index(input$exp,input$happy,input$quals,input$comp,col1,col2,col3,col4)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,input$comp,input$testjob,input$nottestjob,col1,col2,col3,col4,col5,col6)
     
     #column containing happiness index is 54
     data_to_plot <- apply_index(index_to_plot, 54)
@@ -59,8 +65,12 @@ shinyServer(function(input, output){
     col3 <- 17
     #column containing computing is 18
     col4 <- 18
+    #column containing testjob is 9
+    col5 <- 9
+    #column containing nottestjob is 10
+    col6 <- 10
     
-    index_to_plot <- make_index(input$exp,input$happy,input$quals,input$comp,col1,col2,col3,col4)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,input$comp,input$testjob,input$nottestjob,col1,col2,col3,col4,col5,col6)
     
     #if the index to plot contains no values, don't try to plot anything
     if(length(index_to_plot) < 1){
