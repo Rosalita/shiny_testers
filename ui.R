@@ -19,70 +19,99 @@ source("helper.R")
 
 library(shiny) # load shiny
 
-shinyUI(pageWithSidebar(
+shinyUI(fluidPage(
   
-  headerPanel("Explore a Sample of Software Testers"),
+  titlePanel("Explore a Sample of Software Testers"),
   
-  sidebarPanel(
-    h4("Define a group of Software Testers to examine"),
-    
-  checkboxGroupInput("exp", 
-                     label = "1. Testing Experience", 
-                     # column 14 is experience
-                     choices = explevels, #explevels is defined in helper.R
-                     selected = c("less than a year", 
-                                  "1 - 2 years", 
-                                  "2 - 5 years",
-                                  "5 - 10 years",
-                                  "10 - 20 years",
-                                  "More than 20 years"),
-                     inline = FALSE, 
-                     width = NULL),
+  fluidRow(
   
-   
-    radioButtons(inputId = "happy", 
-                 label = "2. States they are happy in current job", 
-                 c("Both Yes and No Groups" = "b",
-                   "Yes Group" = "Yes", 
-                   "No Group" = "No")
+  column(4,
+      wellPanel(   
+        h4("Define a group of Software Testers to examine"),
+        
+        fluidRow(
+          column(6,
+                 checkboxGroupInput("exp", 
+                                    label = "1. Testing Experience", 
+                                    # column 14 is experience
+                                    choices = explevels, #explevels is defined in helper.R
+                                    selected = c("less than a year", 
+                                                 "1 - 2 years", 
+                                                 "2 - 5 years",
+                                                 "5 - 10 years",
+                                                 "10 - 20 years",
+                                                 "More than 20 years"),
+                                    inline = FALSE, 
+                                    width = NULL)
                  ),
+          column(6,
+                 checkboxGroupInput(inputId = "quals",
+                                    label = "2. Highest Qualification",
+                                    choices = quals, #quals is defined in helper.R
+                                    selected= c("None",
+                                                "GCSEs or equivalent",
+                                                "A-Levels or equivalent", 
+                                                "Foundation course", 
+                                                "Bachelors degree",
+                                                "Masters degree",
+                                                "Doctorate"),
+                                    inline = FALSE, 
+                                    width = NULL)
+              )
+        ),
+        
+        fluidRow(
+          column(6,
+                 radioButtons(inputId = "comp", 
+                              label = "3. States they studied computing", 
+                              c("Both Yes and No Groups" = "b",
+                                "Yes Group" = "Yes", 
+                                "No Group" = "No")
+                 )
+          ),
+          column(6,
+                 radioButtons(inputId = "happy", 
+                              label = "4. States they are happy in current job", 
+                              c("Both Yes and No Groups" = "b",
+                                "Yes Group" = "Yes", 
+                                "No Group" = "No")
+                 )
+          )
+        ),
     
-    checkboxGroupInput(inputId = "quals",
-                       label = "3. Highest Qualification",
-                       choices = quals, #quals is defined in helper.R
-                       selected= c("None",
-                                   "GCSEs or equivalent",
-                                   "A-Levels or equivalent", 
-                                   "Foundation course", 
-                                   "Bachelors degree",
-                                   "Masters degree",
-                                   "Doctorate"),
-                       inline = FALSE, 
-                       width = NULL),
+        fluidRow(
+          column(6,
+                 checkboxGroupInput(inputId = "testjob",
+                                    label = "5. Likelihood to seek a different testing job in next 12 months",
+                                    choices = testjoblevels, #testjoblevels is defined in helper.R
+                                    selected= c("Very unlikely",
+                                                "Unlikely",
+                                                "Not sure", 
+                                                "Likely", 
+                                                "Very Likely"),
+                                    inline = FALSE, 
+                                    width = NULL)
+          ),
+          column(6,
+                 checkboxGroupInput(inputId = "nottestjob",
+                                    label = "5. Likelihood to seek a job outside of testing in next 12 months",
+                                    choices = testjoblevels, #testjoblevels is defined in helper.R
+                                    selected= c("Very unlikely",
+                                                "Unlikely",
+                                                "Not sure", 
+                                                "Likely", 
+                                                "Very Likely"),
+                                    inline = FALSE, 
+                                    width = NULL)
+          )
+        )
   
-    radioButtons(inputId = "comp", 
-               label = "4. States they studied computing", 
-               c("Both Yes and No Groups" = "b",
-                 "Yes Group" = "Yes", 
-                 "No Group" = "No")
-               ),
-    checkboxGroupInput(inputId = "testjob",
-                     label = "5. Likelihood to seek another testing job in next 12 months",
-                     choices = testjoblevels, #testjoblevels is defined in helper.R
-                     selected= c("Very unlikely",
-                                 "Unlikely",
-                                 "Not sure", 
-                                 "Likely", 
-                                 "Very Likely"),
-                     inline = FALSE, 
-                     width = NULL)
-  
-    
+    )
   ),
   
   
   
-  mainPanel(
+  column(8,
     
    tabsetPanel(
      
@@ -142,5 +171,6 @@ shinyUI(pageWithSidebar(
      )
     )
    )
+  )
 ))
 
