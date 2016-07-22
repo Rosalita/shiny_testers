@@ -60,12 +60,22 @@ shinyUI(pageWithSidebar(
                        inline = FALSE, 
                        width = NULL),
   
-     radioButtons(inputId = "comp", 
+    radioButtons(inputId = "comp", 
                label = "4. States they studied computing", 
                c("Both Yes and No Groups" = "b",
                  "Yes Group" = "Yes", 
                  "No Group" = "No")
-               )
+               ),
+    checkboxGroupInput(inputId = "testjob",
+                     label = "5. Likelihood to seek another testing job in next 12 months",
+                     choices = testjoblevels, #testjoblevels is defined in helper.R
+                     selected= c("Very unlikely",
+                                 "Unlikely",
+                                 "Not sure", 
+                                 "Likely", 
+                                 "Very Likely"),
+                     inline = FALSE, 
+                     width = NULL)
   
     
   ),

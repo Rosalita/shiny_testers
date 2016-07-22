@@ -56,7 +56,13 @@ levels(quals)
 # Also don't include level 1 because this is just blank ""
 quals <- factor(quals, levels(quals)[c(8,6,2,5,3,7,4)])
 quals <- levels(quals)  
-  
+
+#extract the levels of likelihood to look for a new testing job
+testjob <- (mydata[,9])
+levels(testjob)
+testjoblevels <- factor(testjob, levels(testjob)[c(6,4,3,2,5)])
+testjoblevels <- levels(testjoblevels)
+
 make_index <- function(input1,input2,input3,input4,col1,col2,col3,col4){
 
  #make an index from experience checkbox selection    
