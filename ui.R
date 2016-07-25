@@ -103,6 +103,25 @@ shinyUI(fluidPage(
                                     inline = FALSE, 
                                     width = NULL)
           )
+        ),
+        
+        fluidRow(
+          column(6,
+                 radioButtons(inputId = "diffjob", 
+                              label = "7. States they held a different job prior to becoming a tester", 
+                              c("Both Yes and No Groups" = "b",
+                                "Yes Group" = "Yes, I had a different job before I started testing", 
+                                "No Group" = "No, my very first job was a testing job.")
+                 )
+          ),
+          column(6,
+                 radioButtons(inputId = "study", 
+                              label = "8. States they knew while studying they wanted to work in testing", 
+                              c("Both Yes and No Groups" = "b",
+                                "Yes Group" = "Yes", 
+                                "No Group" = "No")
+                 )
+          )
         )
   
     )

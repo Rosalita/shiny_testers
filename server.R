@@ -28,6 +28,10 @@ col4 <- 18
 col5 <- 9
 #column containing nottestjob is 10
 col6 <- 10
+#column containing different job is 16
+col7 <- 16
+#column containing want to be a tester while studying is 19
+col8 <- 19
 
 # order of inputs on UI - to do: server order match ui order
 # "1. Testing Experience"
@@ -41,7 +45,22 @@ shinyServer(function(input, output){
  
   output$text1 <- renderText({ 
   
-    index_to_plot <- make_index(input$exp,input$happy,input$quals,input$comp,input$testjob,input$nottestjob,col1,col2,col3,col4,col5,col6)
+    index_to_plot <- make_index(input$exp,
+                                input$happy,
+                                input$quals,
+                                input$comp,
+                                input$testjob,
+                                input$nottestjob,
+                                input$diffjob,
+                                input$study,
+                                col1,
+                                col2,
+                                col3,
+                                col4,
+                                col5,
+                                col6,
+                                col7, 
+                                col8)
     
     #column containing happiness index is 54
     data_to_plot <- apply_index(index_to_plot, 54)
@@ -62,7 +81,9 @@ shinyServer(function(input, output){
     }  
 
     
-    index_to_plot <- make_index(input$exp,input$happy,input$quals,input$comp,input$testjob,input$nottestjob,col1,col2,col3,col4,col5,col6)
+    index_to_plot <- make_index(input$exp,input$happy,input$quals,input$comp,input$testjob,input$nottestjob,input$diffjob,input$study,col1,col2,col3,col4,col5,col6,col7,col8)
+    
+    
     
     #if the index to plot contains no values, don't try to plot anything
     if(length(index_to_plot) < 1){

@@ -69,7 +69,7 @@ levels(nottestjob)
 nottestjoblevels <- factor(nottestjob, levels(nottestjob)[c(6,4,3,2,5)])
 nottestjoblevels <- levels(nottestjoblevels)
 
-make_index <- function(input1,input2,input3,input4,input5,input6,col1,col2,col3,col4,col5,col6){
+make_index <- function(input1,input2,input3,input4,input5,input6,input7,input8,col1,col2,col3,col4,col5,col6,col7,col8){
 
  #make an index from experience checkbox selection    
  ind1 <- which(mydata[,col1] == input1[1])
@@ -125,6 +125,20 @@ make_index <- function(input1,input2,input3,input4,input5,input6,col1,col2,col3,
  
  index_nottestjob <- c(ind1,ind2,ind3,ind4,ind5)
  
+ #make an index from different job radio button selection
+ switch(input7[1], 
+        "Yes, I had a different job before I started testing"={index_diffjob <- which(mydata[,col7] == input7[1])},
+        "No, my very first job was a testing job."={index_diffjob <- which(mydata[,col7] == input7[1])},
+        "b"={index_diffjob <- which((mydata[,col7] == "Yes, I had a different job before I started testing") | (mydata[,col7] == "No, my very first job was a testing job."))}
+ )
+ 
+ #make an index from want to be a tester while studying radio button selection
+ switch(input8[1], 
+        "Yes"={index_study <- which(mydata[,col8] == input8[1])},
+        "No"={index_study <- which(mydata[,col8] == input8[1])},
+        "b"={index_study <- which((mydata[,col8] == "Yes") | (mydata[,col8] == "No"))}
+ )
+ 
  
  # combine first two indexes
  combined_index <- c(index_happy, index_experience)
@@ -153,9 +167,22 @@ make_index <- function(input1,input2,input3,input4,input5,input6,col1,col2,col3,
  # combine the duplicate indexes with next index
  combined_index <- c(dupes, index_nottestjob) 
  
+ # only care about index numbers which are duplicates  
+ dupes <- combined_index [duplicated(combined_index)]
+ 
+ # combine the duplicate indexes with next index
+ combined_index <- c(dupes, index_diffjob) 
+ 
+ # only care about index numbers which are duplicates  
+ dupes <- combined_index [duplicated(combined_index)]
+ 
+ # combine the duplicate indexes with next index
+ combined_index <- c(dupes, index_study) 
+ 
  # in final index only care about index numbers which are duplicates  
  final_index <- combined_index [duplicated(combined_index)]
  
+ print(final_index)
  return(final_index)
   
 } 
