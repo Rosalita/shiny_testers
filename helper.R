@@ -35,7 +35,6 @@ neg_score <- -rowSums(HappyData[,neg_index])
 # The happiness index is a reflection of how positive or negative a job is
 WorkplaceHappinessIndex <- pos_score+neg_score
 
-
 # bind the Workplace Happiness Index onto the end of mydata
 mydata <- cbind(mydata[,],WorkplaceHappinessIndex)
 
@@ -69,179 +68,6 @@ levels(nottestjob)
 nottestjoblevels <- factor(nottestjob, levels(nottestjob)[c(6,4,3,2,5)])
 nottestjoblevels <- levels(nottestjoblevels)
 
-make_index <- function(input1,input2,input3,input4,input5,input6,input7,input8,col1,col2,col3,col4,col5,col6,col7,col8){
-
- #make an index from experience checkbox selection    
- ind1 <- which(mydata[,col1] == input1[1])
- ind2 <- which(mydata[,col1] == input1[2])
- ind3 <- which(mydata[,col1] == input1[3])
- ind4 <- which(mydata[,col1] == input1[4])
- ind5 <- which(mydata[,col1] == input1[5])
- ind6 <- which(mydata[,col1] == input1[6])
-
- index_experience <- c(ind1,ind2,ind3,ind4,ind5,ind6)
-
- #make an index from happy group radio button selection
- switch(input2[1], 
-        "Yes"={index_happy <- which(mydata[,col2] == input2[1])},
-        "No"={index_happy <- which(mydata[,col2] == input2[1])},
-        "b"={index_happy <- which((mydata[,col2] == "Yes") | (mydata[,col2] == "No"))}
-        )
-  
- #make an index from qualification checkbox selection
- ind1 <- which(mydata[,col3] == input3[1])
- ind2 <- which(mydata[,col3] == input3[2])
- ind3 <- which(mydata[,col3] == input3[3])
- ind4 <- which(mydata[,col3] == input3[4])
- ind5 <- which(mydata[,col3] == input3[5])
- ind6 <- which(mydata[,col3] == input3[6])
- ind7 <- which(mydata[,col3] == input3[7])
- 
- index_quals <- c(ind1,ind2,ind3,ind4,ind5,ind6,ind7)
- 
- #make an index from studied computing radio button selection
- switch(input4[1], 
-        "Yes"={index_comp <- which(mydata[,col4] == input4[1])},
-        "No"={index_comp <- which(mydata[,col4] == input4[1])},
-        "b"={index_comp <- which((mydata[,col4] == "Yes") | (mydata[,col4] == "No")| is.na(mydata[,col4]))}
- )
- 
- #make an index for looking for test job
- ind1 <- which(mydata[,col5] == input5[1])
- ind2 <- which(mydata[,col5] == input5[2])
- ind3 <- which(mydata[,col5] == input5[3])
- ind4 <- which(mydata[,col5] == input5[4])
- ind5 <- which(mydata[,col5] == input5[5])
- 
- index_testjob <- c(ind1,ind2,ind3,ind4,ind5)
- 
- 
- #make an index for looking for a not test job
- ind1 <- which(mydata[,col6] == input6[1])
- ind2 <- which(mydata[,col6] == input6[2])
- ind3 <- which(mydata[,col6] == input6[3])
- ind4 <- which(mydata[,col6] == input6[4])
- ind5 <- which(mydata[,col6] == input6[5])
- 
- index_nottestjob <- c(ind1,ind2,ind3,ind4,ind5)
- 
- #make an index from different job radio button selection
- switch(input7[1], 
-        "Yes, I had a different job before I started testing"={index_diffjob <- which(mydata[,col7] == input7[1])},
-        "No, my very first job was a testing job."={index_diffjob <- which(mydata[,col7] == input7[1])},
-        "b"={index_diffjob <- which((mydata[,col7] == "Yes, I had a different job before I started testing") | (mydata[,col7] == "No, my very first job was a testing job."))}
- )
- 
- #make an index from want to be a tester while studying radio button selection
- switch(input8[1], 
-        "Yes"={index_study <- which(mydata[,col8] == input8[1])},
-        "No"={index_study <- which(mydata[,col8] == input8[1])},
-        "b"={index_study <- which((mydata[,col8] == "Yes") | (mydata[,col8] == "No")| is.na(mydata[,col8]))}
- )
- 
-my_indexes <- list(index_experience,
-                   index_happy,
-                   index_quals,
-                   index_comp,
-                   index_testjob,
-                   index_nottestjob,
-                   index_diffjob,
-                   index_study) 
-
-
- 
- # combine first two indexes
-# combined_index <- c(index_happy, index_experience)
- 
- # only care about index numbers which appear in both these indexes, ie. are duplicates
- #dupes <- combined_index [duplicated(combined_index)]
-
- # combine the duplicate indexes with next index
-# combined_index <- c(dupes, index_quals) 
- 
- # only care about index numbers which are duplicates  
-# dupes <- combined_index [duplicated(combined_index)]
- 
- # combine the duplicate indexes with next index
- #combined_index <- c(dupes, index_comp) 
- 
- # only care about index numbers which are duplicates  
- #dupes <- combined_index [duplicated(combined_index)]
-
- # combine the duplicate indexes with next index
- #combined_index <- c(dupes, index_testjob) 
- 
- # only care about index numbers which are duplicates  
- #dupes <- combined_index [duplicated(combined_index)]
- 
- # combine the duplicate indexes with next index
- #combined_index <- c(dupes, index_nottestjob) 
- 
- # only care about index numbers which are duplicates  
- #dupes <- combined_index [duplicated(combined_index)]
- 
- # combine the duplicate indexes with next index
- #combined_index <- c(dupes, index_diffjob) 
- 
- # only care about index numbers which are duplicates  
- #dupes <- combined_index [duplicated(combined_index)]
- 
- # combine the duplicate indexes with next index
-# combined_index <- c(dupes, index_study) 
- 
- # in final index only care about index numbers which are duplicates  
- #final_index <- combined_index [duplicated(combined_index)]
- 
-
- 
- return(my_indexes)
-  
-} 
-
-present_in_all <- function(index_list){
-  # combine first two indexes
-  combined_index <- c(index_list[[1]], index_list[[2]])
-
-  # only care about index numbers which are duplicates  
-  dupes <- combined_index [duplicated(combined_index)]
-  
-  # combine the duplicate indexes with next index
-  combined_index <- c(dupes, index_list[[3]]) 
-  
-  # only care about index numbers which are duplicates  
-  dupes <- combined_index [duplicated(combined_index)]
-  
-  # combine the duplicate indexes with next index
-  combined_index <- c(dupes, index_list[[4]]) 
-  
-  # only care about index numbers which are duplicates  
-  dupes <- combined_index [duplicated(combined_index)]
-  
-  # combine the duplicate indexes with next index
-  combined_index <- c(dupes, index_list[[5]]) 
-  
-  # only care about index numbers which are duplicates  
-  dupes <- combined_index [duplicated(combined_index)]
-  
-  # combine the duplicate indexes with next index
-  combined_index <- c(dupes, index_list[[6]]) 
-  
-  # only care about index numbers which are duplicates  
-  dupes <- combined_index [duplicated(combined_index)]
-  
-  # combine the duplicate indexes with next index
-  combined_index <- c(dupes, index_list[[7]]) 
-  
-  # only care about index numbers which are duplicates  
-  dupes <- combined_index [duplicated(combined_index)]
-  
-  # combine the duplicate indexes with next index
-  combined_index <- c(dupes, index_list[[8]]) 
-  
-  final_list <- combined_index [duplicated(combined_index)]
-  
-  return(final_list)
-}
 
 make_exp_index <- function(input,col){
   ind1 <- which(mydata[,col] == input[1])
@@ -322,6 +148,51 @@ make_study_index <- function(input,col){
   )
 }
 
+present_in_all <- function(index_list){
+  # combine first two indexes
+  combined_index <- c(index_list[[1]], index_list[[2]])
+  
+  # only care about index numbers which are duplicates  
+  dupes <- combined_index [duplicated(combined_index)]
+  
+  # combine the duplicate indexes with next index
+  combined_index <- c(dupes, index_list[[3]]) 
+  
+  # only care about index numbers which are duplicates  
+  dupes <- combined_index [duplicated(combined_index)]
+  
+  # combine the duplicate indexes with next index
+  combined_index <- c(dupes, index_list[[4]]) 
+  
+  # only care about index numbers which are duplicates  
+  dupes <- combined_index [duplicated(combined_index)]
+  
+  # combine the duplicate indexes with next index
+  combined_index <- c(dupes, index_list[[5]]) 
+  
+  # only care about index numbers which are duplicates  
+  dupes <- combined_index [duplicated(combined_index)]
+  
+  # combine the duplicate indexes with next index
+  combined_index <- c(dupes, index_list[[6]]) 
+  
+  # only care about index numbers which are duplicates  
+  dupes <- combined_index [duplicated(combined_index)]
+  
+  # combine the duplicate indexes with next index
+  combined_index <- c(dupes, index_list[[7]]) 
+  
+  # only care about index numbers which are duplicates  
+  dupes <- combined_index [duplicated(combined_index)]
+  
+  # combine the duplicate indexes with next index
+  combined_index <- c(dupes, index_list[[8]]) 
+  
+  final_list <- combined_index [duplicated(combined_index)]
+  
+  return(final_list)
+}
+
 apply_index <- function(index, col){
   
   index <- as.numeric(unlist(index))
@@ -358,8 +229,6 @@ happy_plot <- function(x){
 
 }
 
-?legen
-
 make_bar <- function(x, text){
  
    x <- as.logical(x)
@@ -378,7 +247,7 @@ make_bar <- function(x, text){
        y <- datatable[1] 
        datatable[2] <- y
        datatable[1] <- 0
-       
+  
      } 
     
      if (all(!x)){ # if all the data to plot is FALSE
