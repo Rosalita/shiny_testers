@@ -1,12 +1,12 @@
 
-setwd ("/Dev/Git/shiny_testers") 
-#setwd("/git/shiny_testers")
+#setwd ("/Dev/Git/shiny_testers") 
+setwd("/git/shiny_testers")
 
 library(shiny) # load shiny
 
 #Read data
-mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
-#mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+#mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
 
 # Make an index of all the people which currently work in testing
 # People that currently do not work in testing have been excluded 
@@ -103,7 +103,7 @@ make_index <- function(input1,input2,input3,input4,input5,input6,input7,input8,c
  switch(input4[1], 
         "Yes"={index_comp <- which(mydata[,col4] == input4[1])},
         "No"={index_comp <- which(mydata[,col4] == input4[1])},
-        "b"={index_comp <- which((mydata[,col4] == "Yes") | (mydata[,col4] == "No"))}
+        "b"={index_comp <- which((mydata[,col4] == "Yes") | (mydata[,col4] == "No")| is.na(mydata[,col4]))}
  )
  
  #make an index for looking for test job
@@ -136,61 +136,196 @@ make_index <- function(input1,input2,input3,input4,input5,input6,input7,input8,c
  switch(input8[1], 
         "Yes"={index_study <- which(mydata[,col8] == input8[1])},
         "No"={index_study <- which(mydata[,col8] == input8[1])},
-        "b"={index_study <- which((mydata[,col8] == "Yes") | (mydata[,col8] == "No"))}
+        "b"={index_study <- which((mydata[,col8] == "Yes") | (mydata[,col8] == "No")| is.na(mydata[,col8]))}
  )
  
+my_indexes <- list(index_experience,
+                   index_happy,
+                   index_quals,
+                   index_comp,
+                   index_testjob,
+                   index_nottestjob,
+                   index_diffjob,
+                   index_study) 
+
+
  
  # combine first two indexes
- combined_index <- c(index_happy, index_experience)
+# combined_index <- c(index_happy, index_experience)
  
  # only care about index numbers which appear in both these indexes, ie. are duplicates
- dupes <- combined_index [duplicated(combined_index)]
+ #dupes <- combined_index [duplicated(combined_index)]
 
  # combine the duplicate indexes with next index
- combined_index <- c(dupes, index_quals) 
+# combined_index <- c(dupes, index_quals) 
  
  # only care about index numbers which are duplicates  
- dupes <- combined_index [duplicated(combined_index)]
+# dupes <- combined_index [duplicated(combined_index)]
  
  # combine the duplicate indexes with next index
- combined_index <- c(dupes, index_comp) 
+ #combined_index <- c(dupes, index_comp) 
  
  # only care about index numbers which are duplicates  
- dupes <- combined_index [duplicated(combined_index)]
+ #dupes <- combined_index [duplicated(combined_index)]
 
  # combine the duplicate indexes with next index
- combined_index <- c(dupes, index_testjob) 
+ #combined_index <- c(dupes, index_testjob) 
  
  # only care about index numbers which are duplicates  
- dupes <- combined_index [duplicated(combined_index)]
+ #dupes <- combined_index [duplicated(combined_index)]
  
  # combine the duplicate indexes with next index
- combined_index <- c(dupes, index_nottestjob) 
+ #combined_index <- c(dupes, index_nottestjob) 
  
  # only care about index numbers which are duplicates  
- dupes <- combined_index [duplicated(combined_index)]
+ #dupes <- combined_index [duplicated(combined_index)]
  
  # combine the duplicate indexes with next index
- combined_index <- c(dupes, index_diffjob) 
+ #combined_index <- c(dupes, index_diffjob) 
  
  # only care about index numbers which are duplicates  
- dupes <- combined_index [duplicated(combined_index)]
+ #dupes <- combined_index [duplicated(combined_index)]
  
  # combine the duplicate indexes with next index
- combined_index <- c(dupes, index_study) 
+# combined_index <- c(dupes, index_study) 
  
  # in final index only care about index numbers which are duplicates  
- final_index <- combined_index [duplicated(combined_index)]
+ #final_index <- combined_index [duplicated(combined_index)]
  
- print(final_index)
- return(final_index)
+
+ 
+ return(my_indexes)
   
 } 
 
+present_in_all <- function(index_list){
+  # combine first two indexes
+  combined_index <- c(index_list[[1]], index_list[[2]])
+
+  # only care about index numbers which are duplicates  
+  dupes <- combined_index [duplicated(combined_index)]
+  
+  # combine the duplicate indexes with next index
+  combined_index <- c(dupes, index_list[[3]]) 
+  
+  # only care about index numbers which are duplicates  
+  dupes <- combined_index [duplicated(combined_index)]
+  
+  # combine the duplicate indexes with next index
+  combined_index <- c(dupes, index_list[[4]]) 
+  
+  # only care about index numbers which are duplicates  
+  dupes <- combined_index [duplicated(combined_index)]
+  
+  # combine the duplicate indexes with next index
+  combined_index <- c(dupes, index_list[[5]]) 
+  
+  # only care about index numbers which are duplicates  
+  dupes <- combined_index [duplicated(combined_index)]
+  
+  # combine the duplicate indexes with next index
+  combined_index <- c(dupes, index_list[[6]]) 
+  
+  # only care about index numbers which are duplicates  
+  dupes <- combined_index [duplicated(combined_index)]
+  
+  # combine the duplicate indexes with next index
+  combined_index <- c(dupes, index_list[[7]]) 
+  
+  # only care about index numbers which are duplicates  
+  dupes <- combined_index [duplicated(combined_index)]
+  
+  # combine the duplicate indexes with next index
+  combined_index <- c(dupes, index_list[[8]]) 
+  
+  final_list <- combined_index [duplicated(combined_index)]
+  
+  return(final_list)
+}
+
+make_exp_index <- function(input,col){
+  ind1 <- which(mydata[,col] == input[1])
+  ind2 <- which(mydata[,col] == input[2])
+  ind3 <- which(mydata[,col] == input[3])
+  ind4 <- which(mydata[,col] == input[4])
+  ind5 <- which(mydata[,col] == input[5])
+  ind6 <- which(mydata[,col] == input[6])
+  
+  index_experience <- c(ind1,ind2,ind3,ind4,ind5,ind6)
+  return(index_experience)
+}
+
+make_happy_index <- function(input,col){
+  switch(input[1], 
+         "Yes"={index_happy <- which(mydata[,col] == input[1])},
+         "No"={index_happy <- which(mydata[,col] == input[1])},
+         "b"={index_happy <- which((mydata[,col] == "Yes") | (mydata[,col] == "No"))}
+  )
+  return(index_happy)
+}
+
+make_quals_index <- function(input,col){
+  ind1 <- which(mydata[,col] == input[1])
+  ind2 <- which(mydata[,col] == input[2])
+  ind3 <- which(mydata[,col] == input[3])
+  ind4 <- which(mydata[,col] == input[4])
+  ind5 <- which(mydata[,col] == input[5])
+  ind6 <- which(mydata[,col] == input[6])
+  ind7 <- which(mydata[,col] == input[7])
+  index_quals <- c(ind1,ind2,ind3,ind4,ind5,ind6,ind7)
+  return(index_quals)
+}
+
+make_comp_index <- function(input,col){
+  switch(input[1], 
+         "Yes"={index_comp <- which(mydata[,col] == input[1])},
+         "No"={index_comp <- which(mydata[,col] == input[1])},
+         "b"={index_comp <- which((mydata[,col] == "Yes") | (mydata[,col] == "No")| mydata[,col] == "")}
+  )
+  return(index_comp)
+}
+
+make_testjob_index <- function(input,col){
+  ind1 <- which(mydata[,col] == input[1])
+  ind2 <- which(mydata[,col] == input[2])
+  ind3 <- which(mydata[,col] == input[3])
+  ind4 <- which(mydata[,col] == input[4])
+  ind5 <- which(mydata[,col] == input[5])
+  index_testjob <- c(ind1,ind2,ind3,ind4,ind5)
+  return(index_testjob)
+}
+
+make_nottestjob_index <- function(input,col){
+  ind1 <- which(mydata[,col] == input[1])
+  ind2 <- which(mydata[,col] == input[2])
+  ind3 <- which(mydata[,col] == input[3])
+  ind4 <- which(mydata[,col] == input[4])
+  ind5 <- which(mydata[,col] == input[5])
+  index_nottestjob <- c(ind1,ind2,ind3,ind4,ind5)
+  return(index_nottestjob)
+}
+
+make_diffjob_index <- function(input,col){
+  switch(input[1], 
+         "Yes, I had a different job before I started testing"={index_diffjob <- which(mydata[,col] == input[1])},
+         "No, my very first job was a testing job."={index_diffjob <- which(mydata[,col] == input[1])},
+         "b"={index_diffjob <- which((mydata[,col] == "Yes, I had a different job before I started testing") | (mydata[,col] == "No, my very first job was a testing job."))}
+  )
+  return(index_diffjob)
+}
+
+make_study_index <- function(input,col){
+  switch(input[1], 
+         "Yes"={index_study <- which(mydata[,col] == input[1])},
+         "No"={index_study <- which(mydata[,col] == input[1])},
+         "b"={index_study <- which((mydata[,col] == "Yes") | (mydata[,col] == "No")| mydata[,col] == "")}
+  )
+}
+
 apply_index <- function(index, col){
-  # remove 0's from this index if there are any
-  index_to_plot <- index[index != 0]
-  data <- mydata[index_to_plot,col]
+  
+  index <- as.numeric(unlist(index))
+  data <- mydata[index,col]
   return(data)
 }
 

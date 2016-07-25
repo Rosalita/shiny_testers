@@ -2,14 +2,14 @@
 # A shiny web app - ui.R #
 ##########################
 
-setwd ("/Dev/Git/shiny_testers") 
-#setwd("/git/shiny_testers")
+#setwd ("/Dev/Git/shiny_testers") 
+setwd("/git/shiny_testers")
 
 getwd()
 
 #Read data
-mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
-#mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+#mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
 
 
 #Include the R code in helper.R
@@ -63,7 +63,7 @@ shinyUI(fluidPage(
           column(6,
                  radioButtons(inputId = "comp", 
                               label = "3. States they studied computing", 
-                              c("Both Yes and No Groups" = "b",
+                              c("All testers" = "b",
                                 "Yes Group" = "Yes", 
                                 "No Group" = "No")
                  )
@@ -71,7 +71,7 @@ shinyUI(fluidPage(
           column(6,
                  radioButtons(inputId = "happy", 
                               label = "4. States they are happy in current job", 
-                              c("Both Yes and No Groups" = "b",
+                              c("All testers" = "b",
                                 "Yes Group" = "Yes", 
                                 "No Group" = "No")
                  )
@@ -109,7 +109,7 @@ shinyUI(fluidPage(
           column(6,
                  radioButtons(inputId = "diffjob", 
                               label = "7. States they held a different job prior to becoming a tester", 
-                              c("Both Yes and No Groups" = "b",
+                              c("All testers" = "b",
                                 "Yes Group" = "Yes, I had a different job before I started testing", 
                                 "No Group" = "No, my very first job was a testing job.")
                  )
@@ -117,7 +117,7 @@ shinyUI(fluidPage(
           column(6,
                  radioButtons(inputId = "study", 
                               label = "8. States they knew while studying they wanted to work in testing", 
-                              c("Both Yes and No Groups" = "b",
+                              c("All testers" = "b",
                                 "Yes Group" = "Yes", 
                                 "No Group" = "No")
                  )
@@ -133,8 +133,10 @@ shinyUI(fluidPage(
     
    tabsetPanel(
      
-     tabPanel("Happiness Histogram",plotOutput("happyplot"),
-              textOutput("text1")
+     tabPanel("Happiness Histogram",
+              textOutput("text1"),
+              plotOutput("happyplot")
+
               ),
      
      tabPanel("Positive 1", 
