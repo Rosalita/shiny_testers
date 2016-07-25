@@ -29,6 +29,13 @@ col5 <- 9
 #column containing nottestjob is 10
 col6 <- 10
 
+# order of inputs on UI - to do: server order match ui order
+# "1. Testing Experience"
+# "2. Highest Qualification"
+# "3. States they studied computing"
+# "4. States they are happy in current job"
+# "5. Likelihood to seek a different testing job in next 12 months"
+# "6. Likelihood to seek a job outside of testing in next 12 months"
 
 shinyServer(function(input, output){
  

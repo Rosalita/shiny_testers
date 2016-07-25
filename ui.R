@@ -33,7 +33,6 @@ shinyUI(fluidPage(
           column(6,
                  checkboxGroupInput("exp", 
                                     label = "1. Testing Experience", 
-                                    # column 14 is experience
                                     choices = explevels, #explevels is defined in helper.R
                                     selected = c("less than a year", 
                                                  "1 - 2 years", 
@@ -94,7 +93,7 @@ shinyUI(fluidPage(
           ),
           column(6,
                  checkboxGroupInput(inputId = "nottestjob",
-                                    label = "5. Likelihood to seek a job outside of testing in next 12 months",
+                                    label = "6. Likelihood to seek a job outside of testing in next 12 months",
                                     choices = nottestjoblevels, #nottestjoblevels is defined in helper.R
                                     selected= c("Very unlikely",
                                                 "Unlikely",
