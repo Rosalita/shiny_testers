@@ -134,7 +134,7 @@ shinyUI(fluidPage(
    tabsetPanel(
      
      tabPanel("Happiness Histogram",
-              textOutput("text1"),
+              h3(textOutput("text1")),
               plotOutput("happyplot")
 
               ),

@@ -40,6 +40,8 @@ col8 <- 19
 # "4. States they are happy in current job"
 # "5. Likelihood to seek a different testing job in next 12 months"
 # "6. Likelihood to seek a job outside of testing in next 12 months"
+# "7. States they held a different job prior to becoming a tester"
+# "8. States they knew while studying they wanted to work in testing"
 
 shinyServer(function(input, output){
  
@@ -72,7 +74,7 @@ shinyServer(function(input, output){
    
 
     paste0(c("The selected group contains",length(index_to_plot), "testers"))
-    
+   
     
   })
   
