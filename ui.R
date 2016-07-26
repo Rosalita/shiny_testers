@@ -2,14 +2,14 @@
 # A shiny web app - ui.R #
 ##########################
 
-#setwd ("/Dev/Git/shiny_testers") 
-setwd("/git/shiny_testers")
+setwd ("/Dev/Git/shiny_testers") 
+#setwd("/git/shiny_testers")
 
 getwd()
 
 #Read data
-#mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
-mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+#mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
 
 
 #Include the R code in helper.R
@@ -133,11 +133,35 @@ shinyUI(fluidPage(
     
    tabsetPanel(
      
-     tabPanel("Happiness Histogram",
-              h3(textOutput("text1")),
-              plotOutput("happyplot")
-
+     tabPanel("Happiness Histogram", 
+              fluidRow(
+                column(12, align="center",
+                       br(),
+                       h3(textOutput("text1"))
+                       )
               ),
+              
+            
+              plotOutput("happyplot"),
+              
+              fluidRow(
+                  column(12, 
+                      h3("How Workplace Happiness Index is Calculated"),
+              
+                      h5("Software Testers were presented with 12 positive statements 
+                      about testing in their workplace such as 'When I make a decision, I feel my 
+                      judgement is trusted.' and 12 negative statements such as 'I am usually excluded 
+                      when decisions are made.'"),
+                      
+                      h5("One point was scored for answering true to a positive question and one
+                      point subtracted for answering true to a negative question. Each tester 
+                      achieved a score ranging from -12 to + 12. This score is the 'Workplace Happiness Index'."),
+                   
+                      h5("For each group of testers selected, responses to positive and negative questions can 
+                      be viewed via the tabs at the top of the page.")
+                  )    
+              )
+      ),
      
      tabPanel("Positive 1", 
         fluidRow(
