@@ -2,13 +2,14 @@
 # A shiny web app - ui.R #
 ##########################
 
-setwd ("/Dev/Git/shiny_testers") 
+#setwd ("/Dev/Git/shiny_testers") 
 #setwd("/git/shiny_testers")
 
 getwd()
 
 #Read data
-mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+mydata <- read.csv("data/survey_results_raw.csv", header = TRUE, sep =",")
+#mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
 #mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
 
 
