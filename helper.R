@@ -1,13 +1,13 @@
 
 #setwd ("/Dev/Git/shiny_testers") 
-#setwd("/git/shiny_testers")
+setwd("/git/shiny_testers")
 
 library(shiny) # load shiny
 
 #Read data
-mydata <- read.csv("data/survey_results_raw.csv", header = TRUE, sep =",")
+#mydata <- read.csv("data/survey_results_raw.csv", header = TRUE, sep =",")
 #mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
-#mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
 
 # Make an index of all the people which currently work in testing
 # People that currently do not work in testing have been excluded 
@@ -273,9 +273,31 @@ happy_plot <- function(x){
        xlab = "Workplace Happiness Index",
        col = rainbow(20),
        xaxt = "n",
+       yaxt = "n",
        main = "Histogram of Happiness at work"
   )
   axis(1, at = seq(-12, 12, by = 1))
+
+  totals <- table(x)
+  largest_value <- (max(totals))
+  
+  if(largest_value <= 10){
+    axis(2, at = seq(0, length(x), by = 1))
+  }
+  
+  if ((largest_value > 10) & (largest_value <= 20)){
+    axis(2, at = seq(0, length(x), by = 2))
+  }
+  
+  if ((largest_value  > 20) & (largest_value  <= 50)){
+    axis(2, at = seq(0, length(x), by = 5))
+  }
+  
+  if (largest_value  > 50){
+    axis(2, at = seq(0, length(x), by = 10))
+  }
+  
+  axis(2, at = seq(0, length(x), by = 2))
   abline(v = mean(x), col = "black", lty = 5, lwd = 2)
   abline(v = median(x), col = "grey", lty = 5, lwd = 2)
   legend("topleft",

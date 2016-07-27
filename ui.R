@@ -5,12 +5,10 @@
 #setwd ("/Dev/Git/shiny_testers") 
 #setwd("/git/shiny_testers")
 
-getwd()
-
 #Read data
-mydata <- read.csv("data/survey_results_raw.csv", header = TRUE, sep =",")
+#mydata <- read.csv("data/survey_results_raw.csv", header = TRUE, sep =",")
 #mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
-#mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
 
 
 #Include the R code in helper.R
@@ -191,7 +189,15 @@ shinyUI(fluidPage(
                       achieved a score ranging from -12 to + 12. This score is the 'Workplace Happiness Index'."),
                    
                       h5("For each group of testers selected, responses to positive and negative questions can 
-                      be viewed via the tabs at the top of the page.")
+                      be viewed via the tabs at the top of the page."),
+                      
+                      br(),
+                      
+                      column(12, align="center",
+                      div(HTML(paste("This web app was written in R using ", a("Shiny", href="http://shiny.rstudio.com/"), sep = ""))),
+                      div(HTML(paste("The source source code can be found ", a("here on Github", href="https://github.com/Rosalita/shiny_testers"), sep = ""))),
+                      div(HTML(paste("For further information see ", a("Mega Ultra Super Happy Software Testing Funtime", href="http://testingfuntime.blogspot.co.uk/2016/06/a-study-of-software-testers.html"), sep = "")))
+                      )
                   )    
               )
       ),

@@ -6,9 +6,9 @@
 #setwd("/git/shiny_testers")
 
 #Read data
-mydata <- read.csv("data/survey_results_raw.csv", header = TRUE, sep =",")
+#mydata <- read.csv("data/survey_results_raw.csv", header = TRUE, sep =",")
 #mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
-#mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
 
 #Include the R code in helper.R
 source("helper.R")
