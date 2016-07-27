@@ -22,6 +22,7 @@ library(shiny) # load shiny
 shinyUI(fluidPage(
   
   titlePanel("Explore a Sample of Software Testers"),
+  h5("All data collected between 4th May 2016 and 20th May 2016"),
   
   fluidRow(
   
