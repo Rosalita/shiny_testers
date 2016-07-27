@@ -164,6 +164,34 @@ make_recommend_index <- function(input,col){
   return(index_recommend)
 }
 
+make_train_index <- function(input,train1,train2, train3, train4, train5, train6, train7){
+  
+  switch(input[1],
+         "All testers"={index_train <- which((mydata[,train1] == "0")| 
+                                             (mydata[,train1] == "1")| 
+                                             (mydata[,train1] == "2")|
+                                             (mydata[,train1] == "3")|
+                                             (mydata[,train1] == "4")|
+                                             (mydata[,train1] == "5"))},
+         "Rapid Software Testing"=   {index_train <- which(mydata[,train1] != "0")},
+         "AST BBST Foundations"=     {index_train <- which(mydata[,train2] != "0")},
+         "AST BBST Bug Advocacy"=    {index_train <- which(mydata[,train3] != "0")},
+         "AST BBST Test Design"=     {index_train <- which(mydata[,train4] != "0")},
+         "ISEB/ISTQB Foundation"=    {index_train <- which(mydata[,train5] != "0")},
+         "ISEB/ISTQB Advanced"=      {index_train <- which(mydata[,train6] != "0")},
+         "ISEB/ISTQB Expert"=        {index_train <- which(mydata[,train7] != "0")},
+         "None of the above courses"={index_train <- which((mydata[,train1] == "0")& 
+                                                           (mydata[,train2] == "0")& 
+                                                           (mydata[,train3] == "0")&
+                                                           (mydata[,train4] == "0")&
+                                                           (mydata[,train5] == "0")&
+                                                           (mydata[,train6] == "0"))}
+  )
+  
+  return(index_train)
+}
+
+
 present_in_all <- function(index_list){
   # combine first two indexes
   combined_index <- c(index_list[[1]], index_list[[2]])
@@ -209,6 +237,12 @@ present_in_all <- function(index_list){
   
   # combine the duplicate indexes with next index
   combined_index <- c(dupes, index_list[[9]]) 
+  
+  # only care about index numbers which are duplicates  
+  dupes <- combined_index [duplicated(combined_index)]
+  
+  # combine the duplicate indexes with next index
+  combined_index <- c(dupes, index_list[[10]]) 
   
   final_list <- combined_index [duplicated(combined_index)]
   

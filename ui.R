@@ -149,7 +149,7 @@ shinyUI(fluidPage(
                                                 "ISEB/ISTQB Foundation",
                                                 "ISEB/ISTQB Advanced",
                                                 "ISEB/ISTQB Expert",
-                                                "Attended None of the above courses"),
+                                                "None of the above courses"),
                                     selected= "All testers",
                                     inline = FALSE, 
                                     width = NULL)
