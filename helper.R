@@ -68,6 +68,12 @@ levels(nottestjob)
 nottestjoblevels <- factor(nottestjob, levels(nottestjob)[c(6,4,3,2,5)])
 nottestjoblevels <- levels(nottestjoblevels)
 
+#extract the levels of likelihood to recommend testing to others
+recommend <- (mydata[,13])
+levels(recommend)
+recommendlevels <- factor(recommend, levels(recommend)[c(6,4,3,2,5)])
+recommendlevels <- levels(recommendlevels)
+
 
 make_exp_index <- function(input,col){
   ind1 <- which(mydata[,col] == input[1])
@@ -148,6 +154,16 @@ make_study_index <- function(input,col){
   )
 }
 
+make_recommend_index <- function(input,col){
+  ind1 <- which(mydata[,col] == input[1])
+  ind2 <- which(mydata[,col] == input[2])
+  ind3 <- which(mydata[,col] == input[3])
+  ind4 <- which(mydata[,col] == input[4])
+  ind5 <- which(mydata[,col] == input[5])
+  index_recommend <- c(ind1,ind2,ind3,ind4,ind5)
+  return(index_recommend)
+}
+
 present_in_all <- function(index_list){
   # combine first two indexes
   combined_index <- c(index_list[[1]], index_list[[2]])
@@ -187,6 +203,12 @@ present_in_all <- function(index_list){
   
   # combine the duplicate indexes with next index
   combined_index <- c(dupes, index_list[[8]]) 
+  
+  # only care about index numbers which are duplicates  
+  dupes <- combined_index [duplicated(combined_index)]
+  
+  # combine the duplicate indexes with next index
+  combined_index <- c(dupes, index_list[[9]]) 
   
   final_list <- combined_index [duplicated(combined_index)]
   

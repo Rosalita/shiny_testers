@@ -32,6 +32,8 @@ col6 <- 10
 col7 <- 16
 #column containing want to be a tester while studying is 19
 col8 <- 19
+#column containing likelihood to recommend testing is 13
+col9 <- 13
 
 # order of inputs on UI - to do: server order match ui order
 # "1. Testing Experience"
@@ -56,6 +58,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -65,7 +68,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
       
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -99,6 +103,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -108,7 +113,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -134,6 +140,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -143,7 +150,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -164,6 +172,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -173,7 +182,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -194,6 +204,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -203,7 +214,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -224,6 +236,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -233,7 +246,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -254,6 +268,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -263,7 +278,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -284,6 +300,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -293,7 +310,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -314,6 +332,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -323,7 +342,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -344,6 +364,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -353,7 +374,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -374,6 +396,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -383,7 +406,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -404,6 +428,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -413,7 +438,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -434,6 +460,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -443,7 +470,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -464,6 +492,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -473,7 +502,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -493,6 +523,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -502,7 +533,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -523,6 +555,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -532,7 +565,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -553,6 +587,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -562,7 +597,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -583,6 +619,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -592,7 +629,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -613,6 +651,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -622,7 +661,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -643,6 +683,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -652,7 +693,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -673,6 +715,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -682,7 +725,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -703,6 +747,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -712,7 +757,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -733,6 +779,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -742,7 +789,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -763,6 +811,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -772,7 +821,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -793,6 +843,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -802,7 +853,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     
@@ -823,6 +875,7 @@ shinyServer(function(input, output){
     nottestjob_index <- make_nottestjob_index(input$nottestjob, col6)
     diffjob_index <- make_diffjob_index(input$diffjob, col7)
     study_index <- make_study_index(input$study, col8)
+    recommend_index <- make_recommend_index(input$recommend,col9)
     
     #combine all indexes into a list
     list_of_indexes <- list(exp_index,
@@ -832,7 +885,8 @@ shinyServer(function(input, output){
                             testjob_index,
                             nottestjob_index,
                             diffjob_index,
-                            study_index)
+                            study_index,
+                            recommend_index)
     
     index_to_plot <- present_in_all(list_of_indexes)
     

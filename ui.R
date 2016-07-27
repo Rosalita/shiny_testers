@@ -123,6 +123,37 @@ shinyUI(fluidPage(
                                 "No Group" = "No")
                  )
           )
+        ),
+        
+        fluidRow(
+          column(6,
+                 checkboxGroupInput(inputId = "recommend",
+                                    label = "9. Likelihood to recommend testing to others",
+                                    choices = recommendlevels, #recommendlevels is defined in helper.R
+                                    selected= c("Very unlikely",
+                                                "Unlikely",
+                                                "Not sure", 
+                                                "Likely", 
+                                                "Very Likely"),
+                                    inline = FALSE, 
+                                    width = NULL)
+          ),
+          column(6,
+                 radioButtons(inputId = "training",
+                                    label = "10. Attended training Courses",
+                                    choices = c("All testers",
+                                                "Rapid Software Testing", 
+                                                "AST BBST Foundations",
+                                                "AST BBST Bug Advocacy",
+                                                "AST BBST Test Design",
+                                                "ISEB/ISTQB Foundation",
+                                                "ISEB/ISTQB Advanced",
+                                                "ISEB/ISTQB Expert",
+                                                "Attended None of the above courses"),
+                                    selected= "All testers",
+                                    inline = FALSE, 
+                                    width = NULL)
+          )
         )
   
     )
