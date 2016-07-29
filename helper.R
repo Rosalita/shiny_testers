@@ -39,15 +39,6 @@ WorkplaceHappinessIndex <- pos_score+neg_score
 # bind the Workplace Happiness Index onto the end of mydata
 mydata <- cbind(mydata[,],WorkplaceHappinessIndex)
 
-#extract the levels of experience so these can be used on the ui
-experience <- (mydata[,14])
-#check levels
-levels(experience)
-#looks like they are arranged alphabetically so change order from shortest to longest instead
-# Also don't include level 1 because this is just blank ""
-explevels <- factor(experience, levels(experience)[c(6,2,4,5,3,7)])
-explevels <- levels(explevels)
-
 #extract the levels of qualifications so these can be used on the ui
 quals <- (mydata[,17])
 #check levels

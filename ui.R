@@ -35,7 +35,12 @@ shinyUI(fluidPage(
           column(6,
                  checkboxGroupInput("exp", 
                                     label = "1. Testing Experience", 
-                                    choices = explevels, #explevels is defined in helper.R
+                                    choices = c("less than a year", 
+                                                "1 - 2 years", 
+                                                "2 - 5 years",
+                                                "5 - 10 years",
+                                                "10 - 20 years",
+                                                "More than 20 years"), 
                                     selected = c("less than a year", 
                                                  "1 - 2 years", 
                                                  "2 - 5 years",
