@@ -350,10 +350,12 @@ make_bar <- function(x, text){
   midpoints <- barplot(datatable,
           col = c("magenta", "cyan"),
           main = text,
-          ylim = c(0,205),
+          ylim = c(0,180),
+          yaxt = "n",
           xlim = c(0,2.5))
- text(midpoints, 3, totals ,cex=1, pos=3) 
- text(midpoints, 3, perc ,cex=1, pos=3, offset = 16.2) 
+  text(midpoints, 0, totals, pos=3)
+  text(midpoints, 0, perc , pos=3, cex=0.8, offset = 1.5)
+  axis(2, at = seq(0, 200 , by = 20))
 }
 
 
