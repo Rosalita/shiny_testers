@@ -93,7 +93,7 @@ shinyServer(function(input, output){
     #column containing happiness index is 54
     data_to_plot <- apply_index(index_to_plot, 54)
 
-    paste0(c("The selected group contains",length(index_to_plot), "testers"))
+    paste0(c("The selected group contains",length(index_to_plot), "testers", data_to_plot))
    
     
   })

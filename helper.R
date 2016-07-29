@@ -267,6 +267,13 @@ happy_plot <- function(x){
     breaks <- c(x,(x+1))
   } 
 
+  #need to know if all values in x are the same
+  #check all values in x equal the first value in x
+  if(all(x == x[1])){
+    breaks <- c(x[1],(x[1]+1)) #if all values are the same, calculate breaks without using min() and max()
+    print(breaks)
+  }
+  
   hist(x, 
        breaks = breaks,
        xlim = c(-12,12),
