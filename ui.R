@@ -2,21 +2,23 @@
 # A shiny web app - ui.R #
 ##########################
 
-#setwd ("/Dev/Git/shiny_testers") 
+setwd ("/Dev/Git/shiny_testers") 
 #setwd("/git/shiny_testers")
 
 #Read data
 #mydata <- read.csv("data/survey_results_raw.csv", header = TRUE, sep =",")
-#mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
-mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+mydata <- read.csv("C:/Dev/Git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
+#mydata <- read.csv("/git/shiny_testers/data/survey_results_raw.csv", header = TRUE, sep =",")
 
 
 #Include the R code in helper.R
 source("helper.R")
 
 #install.packages("shiny") #install shiny
-
 library(shiny) # load shiny
+
+#latest version of shiny complained about Rcpp no present so installed it
+#install.packages("Rcpp")
 
 shinyUI(fluidPage(
   
